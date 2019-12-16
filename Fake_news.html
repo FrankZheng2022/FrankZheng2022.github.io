@@ -11818,8 +11818,8 @@ div#notebook {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>In this project, we will use the "Liar" dataset, which is a benchmark dataset for fake news detection proposed by William Yang Wang in 2017. Feel free to check out the original paper <a href="https://arxiv.org/pdf/1705.00648.pdf">here</a>. This dataset contains 12.8K manually labeled statements in various contexts from <a href="https://www.politifact.com/">PolitiFact.com</a>, a fact-checking wesite that provides detailed analysis report and links to source documents for each case. Compared to many previous fake news datasets, the "Liar" dataset is an order of magnitude larger, which could allow us to train the complicated neural network models much better. 
-In the "liar" dataset, it labels each statement into six categories: barely true, half true, mostly true, true, false, and pants-on-fire. Below are three examples of statement labeled as false and pants-on-fire, which are retreived from the original paper.</p>
+<p>In this project, we will use the "Liar" dataset, which is a benchmark dataset for fake news detection proposed by William Yang Wang in 2017. Feel free to check out the original paper <a href="https://arxiv.org/pdf/1705.00648.pdf">here</a>. This dataset contains 12.8K manually labeled statements in various contexts from <a href="https://www.politifact.com/">PolitiFact.com</a>, a fact-checking website that provides detailed analysis reports and links to source documents for each case. Compared to many previous fake news datasets, the "Liar" dataset is an order of magnitude larger, which could allow us to train the complicated neural network models much better. 
+In the "liar" dataset, it labels each statement into six categories: barely true, half true, mostly true, true, false, and pants-on-fire. Below are three examples of statements labeled as false and pants-on-fire, which are retrieved from the original paper.</p>
 
 </div>
 </div>
@@ -11845,7 +11845,7 @@ In the "liar" dataset, it labels each statement into six categories: barely true
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>In our dataset, misinformation is labled as false, and disinformation is labeled as pants on fire. Notice the difference between these two concepts. Misinformation refers the information that may not be accurate or complete,  whereas disinformation additionally assumes malicious motives to mislead the people. So we consider disinformation as a subset of misinformation. So to distinguish between misformation and disinformation, fact-checking cannot even help since both of them cotain wrong information. In fact, in some cases, the distinctions between these two are not so clear, which makes the fake-news detection task much more challenging. In this tutorial, we will focus on the linguistic features of the statements such as the writing style, syntax or semantic information contained in the statements.</p>
+<p>In our dataset, misinformation is labeld as false, and disinformation is labeled as pants on fire. Notice the difference between these two concepts. Misinformation refers to the information that may not be accurate or complete,  whereas disinformation additionally assumes malicious motives to mislead the people. So we consider disinformation as a subset of misinformation. So to distinguish between misformation and disinformation, fact-checking cannot even help since both of them contain wrong information. In fact, in some cases, the distinctions between these two are not so clear, which makes the fake-news detection task much more challenging. In this tutorial, we will focus on the linguistic features of the statements such as syntax or semantic information such as writing style, in order to distinguish these two categories.</p>
 
 </div>
 </div>
@@ -11854,7 +11854,7 @@ In the "liar" dataset, it labels each statement into six categories: barely true
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>In addition to the original statements, this dataset also incorporate various metadata about the speakers and the statements themselves, including the general topics of the statements, context of the statements, speakers' jobs, the speakers' credit history count (Number of true, false, pant-on-fire statement that he or she made in the past), and speakers' party affiliations. In this project, we will specifically incorporate speaker's credit history into our model because we think that it is the most indicative feature among all the metadata provided in this dataset.</p>
+<p>In addition to the original statements, this dataset also incorporate various metadata about the speakers and the statements themselves, including the general topics of the statements, context of the statements, speakers' jobs, the speakers' credit history count (Number of true, false, pants-on-fire statement that he or she made in the past), and speakers' party affiliations. In this project, we will specifically incorporate the speaker's credit history into our model because we think that it is the most indicative feature among all the metadata provided in this dataset.</p>
 
 </div>
 </div>
@@ -12200,7 +12200,7 @@ In the "liar" dataset, it labels each statement into six categories: barely true
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Next, we take a look at how many training examples we have for each class labels, since whether or not the dataset is balanced a lot would change our choice of machine learning models later.</p>
+<p>Next, we take a look at how many training examples we have for each class labels, since whether or not the dataset is balanced would influence our choice of machine learning models later.</p>
 
 </div>
 </div>
@@ -12374,7 +12374,7 @@ In the "liar" dataset, it labels each statement into six categories: barely true
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>To prepare our data for future work, in this section, we will clean the "statement" columns in the table, and the credit history columns, which are the primary columns that we will work with in this tutorial. First, let's take a look at the text data in this dataset, and specifically we want to know the distribution of length of the statements. So we will compute the length of each statement and put them into 10 fixed-size buckets. Each bucket has length 10 (0-9, 10-19, ... ). Then we make a barplot for the length of statements in this dataset.</p>
+<p>To prepare our data for future work, in this section, we will clean the "statement" columns in the table, and the credit history columns, which will be the primary columns that we work with in this tutorial. First, let's take a look at the text data in this dataset, and specifically, we want to know the distribution of length of the statements. So we will compute the length of each statement and put them into 10 fixed-size buckets. Each bucket has length 10 (0-9, 10-19, ... ). Then we make a barplot for the length of statements in this dataset.</p>
 
 </div>
 </div>
@@ -12387,6 +12387,7 @@ In the "liar" dataset, it labels each statement into six categories: barely true
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">length</span> <span class="o">=</span> <span class="p">{</span><span class="mi">0</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span> <span class="mi">3</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span> <span class="mi">4</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span> <span class="mi">5</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span> <span class="mi">6</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span> <span class="mi">7</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span> <span class="mi">8</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span> <span class="mi">9</span><span class="p">:</span><span class="mi">0</span> <span class="p">,</span> <span class="mi">10</span><span class="p">:</span><span class="mi">0</span><span class="p">}</span>
 <span class="n">index</span> <span class="o">=</span> <span class="p">[]</span>
 <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="c1"># Count the length of each statement and put them into bucket</span>
 <span class="k">for</span> <span class="n">_</span><span class="p">,</span><span class="n">row</span> <span class="ow">in</span> <span class="n">train_df</span><span class="o">.</span><span class="n">iterrows</span><span class="p">():</span>
     <span class="n">tokens</span> <span class="o">=</span> <span class="n">word_tokenize</span><span class="p">(</span><span class="n">row</span><span class="p">[</span><span class="s2">&quot;statement&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">lower</span><span class="p">())</span>
     <span class="k">if</span> <span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">tokens</span><span class="p">)</span><span class="o">/</span><span class="mi">10</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mi">10</span><span class="p">):</span>
@@ -12398,7 +12399,6 @@ In the "liar" dataset, it labels each statement into six categories: barely true
 
 <span class="c1"># Getting the number of counts for each bucket</span>
 <span class="n">y</span> <span class="o">=</span> <span class="p">[</span><span class="n">i</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">length</span><span class="o">.</span><span class="n">items</span><span class="p">()]</span>
-
 <span class="c1"># In order for the readibility of our plot, we will do a mapping </span>
 <span class="c1"># here to explicitly show the range of the length for each the bucket.</span>
 <span class="n">mapping</span> <span class="o">=</span> <span class="p">{</span><span class="mi">0</span><span class="p">:</span><span class="s2">&quot;0-9&quot;</span><span class="p">,</span> <span class="mi">1</span><span class="p">:</span><span class="s2">&quot;10-19&quot;</span><span class="p">,</span> <span class="mi">2</span><span class="p">:</span><span class="s2">&quot;20-29&quot;</span><span class="p">,</span> <span class="mi">3</span><span class="p">:</span><span class="s2">&quot;30-39&quot;</span><span class="p">,</span> <span class="mi">4</span><span class="p">:</span><span class="s2">&quot;40-49&quot;</span><span class="p">,</span> <span class="mi">5</span><span class="p">:</span><span class="s2">&quot;50-59&quot;</span><span class="p">,</span>\
@@ -12530,7 +12530,7 @@ In the "liar" dataset, it labels each statement into six categories: barely true
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>So as we see, this statement has not been cleaned for some reason. It has a lot of nonsense characters which is probably because of the scraping process. Since we only have 4 of these, we will simply just drop those outliers.</p>
+<p>So as we see, this statement has not been cleaned for some reason. It has a lot of nonsense characters (probably control characters) which has not been cleaned beforehand. Since we only have 4 of these, we will simply just drop those outliers.</p>
 
 </div>
 </div>
@@ -12553,7 +12553,7 @@ In the "liar" dataset, it labels each statement into six categories: barely true
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Next, since we will take into account the credit history of the speaker (columns from barely true count to pants-fire counts), we fill in zeros for any row which has missing values for these counts.</p>
+<p>Next, since we will take into account the credit history of each speaker (columns from barely true count to pants-fire counts), we fill in zeros for any row which has missing values for these counts.</p>
 
 </div>
 </div>
@@ -12589,7 +12589,7 @@ In the "liar" dataset, it labels each statement into six categories: barely true
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>In order to train unsupervised learning and supervised learning models on our dataset, we need to do some transformations on our text data first, i.e. transforming the textual data into numerical data. So first, we need to construct a corpus from our training set, which is a list of all the statements in the training set. For example, a simple corpus could be [ ["I","am", "back"], ["How", "are, "you] ]. So to construct the corpus, we will
 first tokenize each statement into a list of words. Then we will remove the punctuation and stop words (commonly appearing words like the or is, which are meaningless in our machine learning models) from our texts. Finally, we will lemmatize each word by the wordnetlemmatizer in nltk library.  <br>
-In addition to the whole corpus of the training set, here we will also construct the corpus that only consist of training examples labeled as true or only trainig examples labeled as pants-fire in order to generate the word clouds for these two sets later.</p>
+In addition to the whole corpus of the training set, here we will also construct the corpus that only consists of training examples labeled as true or only training examples labeled as pants-fire in order to generate the word clouds for these two sets later.</p>
 
 </div>
 </div>
@@ -12631,7 +12631,6 @@ In addition to the whole corpus of the training set, here we will also construct
     <span class="n">stop_words</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s2">&quot;percent&quot;</span><span class="p">)</span>
     
     <span class="k">for</span> <span class="n">_</span><span class="p">,</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">df</span><span class="o">.</span><span class="n">iterrows</span><span class="p">():</span>
-        <span class="c1"># First, we tokenize the document</span>
         <span class="n">tokens</span> <span class="o">=</span> <span class="n">word_tokenize</span><span class="p">(</span><span class="n">row</span><span class="p">[</span><span class="s2">&quot;statement&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">lower</span><span class="p">())</span> 
         <span class="c1"># Remove all the punctuation) and all the numbers in the text,</span>
         <span class="c1"># and also all the stop_words</span>
@@ -12685,7 +12684,7 @@ In addition to the whole corpus of the training set, here we will also construct
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Then we add bigrams to our training corpus. In natural language processing, bigrams refers to representing two adjacent words as one token such "machine learning". Without bigrams, we could only represent "machine learning" as "machine" and "learning", which may cause the lost of information in this case. So with bigram, we could add some phrases like "last year" into our model.</p>
+<p>Then we add bigrams to our training corpus. In natural language processing, bigram refers to representing two adjacent words as one token such as "machine learning". Without bigrams, we could only represent "machine learning" as "machine" and "learning", which may cause the loss of information in this case. So with bigram, we could add some two-word phrases like "last year" into our model.</p>
 
 </div>
 </div>
@@ -12734,7 +12733,7 @@ In addition to the whole corpus of the training set, here we will also construct
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>We do want to point out out that there are limitations with the text processingtechniques that we do here. We might lose useful information of some statements for deleting all the numbers. For example, we could have a fake news which is like "Scientists estimate that by 2050, the gloal average temperature will increase by 2 Fahrenheit". It is a fake news since the actual prediction of global mean temperature growth is much higher than 2 Fahrenheit. In this case, by deleting 2, we cannot distinguish the fake news from the true news. However, our models that we train in this tutorial will not do the explicit fact-checking and will only focus on the linguistic features of the statement, so it's safe to delete those numbers. However, to get a better performance of the automated fake news detection, we might want to do the extra fact-checking and keep those numbers in the preprocessing stage.</p>
+<p>We do want to point out that there are limitations to the text processing techniques that we do here. We might lose useful information about some statements for deleting all the numbers. For example, we could have a fake statement which is like "Scientists estimate that by 2050, the global average temperature will increase by 2 Fahrenheit". It is fake news since the actual prediction of global mean temperature growth is much higher than 2 Fahrenheit. In this case, by deleting 2, we cannot distinguish the fake news from the true news. However, the models that we train in this tutorial will not do the explicit fact-checking and will only focus on the linguistic features of the statement, so it's safe to delete those numbers. However, to get better performance of the automated fake news detection, we might want to do the extra fact-checking and keep those numbers in the preprocessing stage.</p>
 
 </div>
 </div>
@@ -12759,8 +12758,8 @@ In addition to the whole corpus of the training set, here we will also construct
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>To visualize and compare the true news and fake news, we will generate word clouds for the the set of true label, pants-fire label statements based on tf-idf scores. <br>
-So first, we start to train the tf-idf model on the true label and pants-fire label set (as well as on the whole training set for the use in the future model). Tf-idf score is the short for term frequency–inverse document frequency. A tf-idf score of a word is computed by multiplying together its term frequency score and its inverse document frequency score. Term frequency means the number of times a word i appears in a specific statement j. Inverse document frequency weights individual word negatively by how frequently it appears in the corpus, so it will penalize the word that appears very often such as go, like, back, etc. In this way, by combining these two scores together, it will make our model work much better than the raw counts. <br></p>
+<p>To visualize and compare the true news and fake news, we will generate word clouds for the set of true labeled and pants-fire labeled statements based on tf-idf scores. <br>
+So first, we start to train the tf-idf model on the true label and pants-fire label set (as well as on the whole training set for the use in the future model). Tf-idf score is the short for term frequency-inverse document frequency. A tf-idf score of a word is computed by multiplying together its term frequency score and its inverse document frequency score. Term frequency means the number of times a word i appears in a specific statement j. Inverse document frequency weights individual words negatively by how frequently it appears in the corpus, so it will penalize the word that appears very often such as go, like, back, etc. In this way, by combining these two scores together, it will make our model work much better than the raw counts. <br></p>
 
 </div>
 </div>
@@ -13065,7 +13064,7 @@ height=600
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Now, we are considering another approach to visualize our dataset. Instead of considering the words that appear frequently in some class labels, we will convert each document to a fixed-length vector in $R^{40}$ through doc2vec model. So this fixed-length vector would contain semantic and syntatic informations about the statements. Then we will apply TSNE dimensional reduction algorithms on these high-dimensional vectors to get 2-dimensional vectors as the output and scatterplot those points. We would like to see see whether or not we could find some cluster structures in our dataset, just as the clear cluster structures found in the famous MNIST dataset.</p>
+<p>Now, we are considering another approach to visualize our dataset. Instead of considering the words that appear frequently in some class labels, we will convert each document to a fixed-length vector in $R^{40}$ through the doc2vec model. So this fixed-length vector would contain semantic and syntactic informations about the statements. Then we will apply TSNE dimensional reduction algorithms on these high-dimensional vectors to get 2-dimensional vectors as the output and scatterplot those points. We would like to see whether or not we could find some cluster structures in our dataset, just as the clear cluster structures found in the famous MNIST dataset.</p>
 
 </div>
 </div>
@@ -13074,8 +13073,8 @@ height=600
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h4 id="Note-on-doc2vec-model">Note on doc2vec model<a class="anchor-link" href="#Note-on-doc2vec-model">&#182;</a></h4><p>Similar to word-embedding, Doc2vec is an unsupervised learning algorithm which represents each document as a fixed-length feature vector. It was proposed by Tomas Mikolov and Quoc Le back in 2014. Feel free to check out the original paper <a href="https://arxiv.org/pdf/1405.4053.pdf">here</a>. 
-Compared to bag-of-word (BoW) model, doc2 embeds the semantics information of the documents in the vector space. But BoW would lose the order of words and therefore ignores the semantics information. In case you don't know what bag-of-words model is, <a href="https://machinelearningmastery.com/gentle-introduction-bag-words-model/">here</a> is a good introduction to bag-of-words model. In addition, length of BoW model is always equal to the size of the dictionary, which could be memory expensive. In comparison, Doc2vec model could transform a variable-length piece of text into an arbitrarily length (fixed) vector. Of course, the length is a hyperparameter that we could choose arbitrarily and is fixed during the training process.</p>
+<h4 id="Note-on-doc2vec-model">Note on doc2vec model<a class="anchor-link" href="#Note-on-doc2vec-model">&#182;</a></h4><p>Similar to word-embedding, Doc2vec is an unsupervised learning algorithm that represents each document as a fixed-length feature vector. It was proposed by Tomas Mikolov and Quoc Le back in 2014. Feel free to check out the original paper <a href="https://arxiv.org/pdf/1405.4053.pdf">here</a>. 
+Compared to bag-of-word (BoW) model, doc2 embeds the semantics information of the documents in the vector space. But BoW would lose the order of words and therefore ignores the semantics information. In case you don't know what bag-of-words model is, <a href="https://machinelearningmastery.com/gentle-introduction-bag-words-model/">here</a> is a good introduction to the BoW model. In addition, length of BoW model is always equal to the size of the dictionary, which could be memory expensive. In comparison, Doc2vec model could transform a variable-length piece of text into an arbitrary length vector. Of course, the length is a hyperparameter that we could choose arbitrarily and is fixed during the training process.</p>
 
 </div>
 </div>
@@ -13187,8 +13186,7 @@ Notice that windows size is an important hyperparameter in the doc2vec model. It
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Now, let's apply the dimensional reduction algorithms TSNE on this high dimensional space ($R^{45}$). TSNE is the Synonym for  T-distributed Stochastic Neighbor Embedding algorithms, which was orignally Laurens van der Maaten and Geoffrey Hinton in 2008.
-Feel free to check out the original paper <a href="http://www.jmlr.org/papers/volume9/vandermaaten08a/vandermaaten08a.pdf">here</a>. We choose TSNE here since it's a nonlinear dimensional reduction algorithm designed for embedding high-dimensional structures in a low dimensional space for visualization.</p>
+<p>Now, let's apply the dimensional reduction algorithms TSNE on this high dimensional space ($R^{45}$) to get a 2D visualization. TSNE is the short for  T-distributed Stochastic Neighbor Embedding algorithms, which was orignally Laurens van der Maaten and Geoffrey Hinton in 2008. Feel free to check out the original paper <a href="http://www.jmlr.org/papers/volume9/vandermaaten08a/vandermaaten08a.pdf">here</a>. We choose TSNE here since it's a nonlinear dimensional reduction algorithm designed for embedding high-dimensional structures in a low dimensional space for visualization, which should be the best candidate for our task.</p>
 
 </div>
 </div>
@@ -13241,7 +13239,7 @@ Feel free to check out the original paper <a href="http://www.jmlr.org/papers/vo
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>From this plot, we see that there is probably some clusters inside in training set, but the structures of each category are not  clear at all in $R^{2}$, unlike the nice cluster structures getting from the famous MNIST dataset. So it could indicate that the the problem of fake news itself is very challenging and our model might not be enough. Our model only looks at the linguistic features, together with the credit history of a speaker. So as we could see, there are more than just linguistic features that could determine whether a statement is fake news or not. The example of the fake news that we made earlier "Scientists estimate that by 2050, the gloal average temperature will increase by 2 Fahrenheit" is a good example where simply looking at the linguistic features will not work. Also consider in some cases, a claim that was treated as fake news ten years ago might be a true news now. So we could see from those examples the subtlety of the fake news problems.</p>
+<p>From this plot, we see that there are probably some clusters inside in the training set, but the structures of each category are not clear at all in $R^{2}$, unlike the nice cluster structures getting from the famous MNIST dataset. So it could indicate that the the problem of fake news itself is very challenging, and our model might not be enough. Our model only looks at the linguistic features, together with the credit history of a speaker. So as we could see, there are more than just linguistic features that could determine whether a statement is a fake news or not. The example of the fake news that we made earlier "Scientists estimate that by 2050, the global average temperature will increase by 2 Fahrenheit" is a good example where simply looking at the linguistic features will not work. Also, consider in some cases, a claim that was treated as fake news ten years ago might be true news now. So we could see from those examples the subtlety of the fake news problems.</p>
 
 </div>
 </div>
@@ -13258,7 +13256,7 @@ Feel free to check out the original paper <a href="http://www.jmlr.org/papers/vo
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>In the first section, we've already seen the general topics distribution for this dataset. To get a better understanding of the detailed topics and semantic structures of our dataset, let's apply the topic modeling techniques in this section. Similar to clustering algorithms like k-means, which you might be more familiar with, topic modeling is a frequently used unsupervised learning algorithms for discovering hidden semantic structures in a text body. Intuitively, given that the document is about a particular topic, we would expect particular set of words to appear in the document more or less frequently. For example, "health","care", "Obama" might appear together in the cluster of statements talking about Obamacare. So the topic modeling algorithms are just trying to find such types of latent semantic structures inside the corpus. In this tutorial, we will use Latent Dirichlet Allocation (LDA) algorithms for topic modeling. Notice that LDA algorithm is a probabilistic model, meaning that for each statement, instead of "hard" clustering, we compute the probability of it being every possible topic. So suppose we want to generate a LDA model with number of topics 10, then each output will be a 10-demsional vector, and its $ith$ component is the probability that the statement belongs to topic $i$. Here is a <a href="http://blog.echen.me/2011/08/22/introduction-to-latent-dirichlet-allocation/">gentle introduction to LDA algorithms</a> and the <a href="http://www.jmlr.org/papers/volume3/blei03a/blei03a.pdf">original paper of LDA</a>. Feel free to check them out.</p>
+<p>In the first section, we've already seen the general topics distribution for this dataset. To get a better understanding of the detailed topics and semantic structures of our dataset, let's apply the topic modeling techniques in this section. Similar to clustering algorithms like k-means, which you might be more familiar with, topic modeling is a frequently used unsupervised learning algorithms for discovering hidden semantic structures in a text body. Intuitively, given that the document is about a particular topic, we would expect a particular set of words to appear in the document more or less frequently. For example, "health","care", "Obama" might appear together in the cluster of statements talking about Obamacare. So the topic modeling algorithms are just trying to find such types of latent semantic structures inside the corpus. In this tutorial, we will use Latent Dirichlet Allocation (LDA) algorithms for topic modeling. Notice that the LDA algorithm is a probabilistic model, meaning that for each statement, instead of "hard" clustering, we compute the probability of it being every possible topic. So suppose we want to generate a LDA model with the number of topics to be 10, then each output will be a 10-dimensional vector, and its $ith$ component is the probability that the statement belongs to topic $i$. Here is a <a href="http://blog.echen.me/2011/08/22/introduction-to-latent-dirichlet-allocation/">gentle introduction to LDA algorithms</a> and the <a href="http://www.jmlr.org/papers/volume3/blei03a/blei03a.pdf">original paper of LDA</a>. Feel free to check them out.</p>
 
 </div>
 </div>
@@ -13433,7 +13431,7 @@ Image retreived from <a href="https://medium.com/nanonets/topic-modeling-with-ls
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>So see that the topics generated by the LDA model indeed make some sense and captures some semantic structures of our dataset. But of course they are not perfect. There are overlaps between topics, and some of them are hard to predict. Still we see a lot of topics successfully catched by our models, including tax cuts, health care, gun violence, public education, elections, etc.</p>
+<p>So see that the topics generated by the LDA model indeed make some sense and captures some semantic structures of our dataset. But of course, they are not perfect. There are overlaps between topics, and some of them are hard to predict. Still, we see a lot of topics successfully caught by our models, including tax cuts, health care, gun violence, public education, elections, etc.</p>
 
 </div>
 </div>
@@ -13656,8 +13654,8 @@ K Nearest Neighbors Test set accuracy:0.17205998421468036
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Next, let's try the random forest algorithms on our training set. Random forest algorithm is a powerful and robust esmeble learning algorithms that people use fairly often in data science competition like Kaggle competition. The huge advantage of random forest algorithms is its robustness to the noise in the data because of its randomness. We are not going explain in details how random forest work here. But if you want to learn more about how random forest words, feel free to check out this tutorial <a href="https://towardsdatascience.com/an-implementation-and-explanation-of-the-random-forest-in-python-77bf308a9b76">here</a>. In case you want to know more about the statistical theory behind random forest, check out chapter 8 of the book An Introduction to Statistical Learning with Applications in R. Here is a <a href="http://faculty.marshall.usc.edu/gareth-james/ISL/">link</a> to the website of this book. <br>
-Same as KNN model, we use the random grid search to search for the best set of hyperparameters.</p>
+<p>Next, let's try the random forest algorithms on our training set. Random forest algorithm is a powerful and robust ensemble learning algorithm that people use fairly often. The huge advantage of random forest algorithms is its robustness to the noise in the data because of its randomness. We are not going to explain in detail how random forest works here. But if you want to learn more about how random forest words, feel free to check out this tutorial <a href="https://towardsdatascience.com/an-implementation-and-explanation-of-the-random-forest-in-python-77bf308a9b76">here</a>. In case you want to know more about the statistical theory behind random forest, check out chapter 8 of the book An Introduction to Statistical Learning with Applications in R. Here is a <a href="http://faculty.marshall.usc.edu/gareth-james/ISL/">link</a> to the website of this book. <br>
+Same as the KNN model, we use the random grid search to search for the best set of hyperparameters.</p>
 
 </div>
 </div>
@@ -14103,7 +14101,7 @@ Accuracy of the neural network model on the test set 0.410418301820755
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>As we see in the graph, after about epoch 6, the accuracy on the test set begin to oscillate, and after about 10 epochs, the loss on the training and the cross-validation set barely decrease any more. So this is roughly where the neural network begins to overfit the data. <br></p>
+<p>As we see in the graph, after about epoch 6, the accuracy on the test set begins to oscillate, and after about 10 epochs, the loss on the training and the cross-validation set barely decrease any more. So this is roughly where the neural network begins to overfit the data. <br></p>
 
 </div>
 </div>
@@ -14112,7 +14110,7 @@ Accuracy of the neural network model on the test set 0.410418301820755
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Suprisingly, our neural net model with Doc2vec embeddings work <strong>much better</strong> than the Convolutional Neural Network (CNN) with word embedding model implemented by the original paper, which only achieves 27.7% accuracy on the validation set and 27.4% accuracy on the test set at best. For the linear SVM model that we implemented earlier, it also achieve much higher accuracy on the cross-validation set. Our speculation here is that the difference between the mode performance is probably due to Doc2vec model being used in this project instead of word embedding. As we see earlier, there is a huge variation in terms of the number of words contained in different statements. So for word-embedding, it has to pad a lot of zero terms to the end of the vector for many short statements, which might cause problems to the machine learning algorithms.</p>
+<p>Surprisingly, our neural network model with Doc2vec embeddings works <strong>much better</strong> than the Convolutional Neural Network (CNN) with word embedding model implemented by the original paper, which only achieves <strong>27.7%</strong> accuracy on the validation set and <strong>27.4%</strong> accuracy on the test set with their best model. For the linear SVM model that we implemented earlier, we also achieve much higher accuracy on the cross-validation set and test set. Our speculation here is that the difference between the model performance is probably due to the Doc2vec model being used in this project instead of word embedding. As we see earlier, there is a huge variation in terms of the number of words contained in different statements. So for word-embedding, it has to pad a lot of zero terms to the end of the vector for many short statements, which might cause problems to the machine learning algorithms.</p>
 
 </div>
 </div>
@@ -14121,7 +14119,7 @@ Accuracy of the neural network model on the test set 0.410418301820755
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Here are three examples of fake claims which are labeled as pants-fire that have been succesfully captured by our neural network model. <br></p>
+<p>Here are three examples of fake claims which are labeled as pants-fire that have been successfully captured by our neural network model. <br></p>
 <ul>
 <li>The Republican leadership in the House has refused to address the issues that matter the most to Rhode Island, such as passing a jobs bill. <br></li>
 <li>Never mind that no red light camera, no speed camera, nor any radar gun has ever stopped one accident from occurring. <br></li>
@@ -14136,7 +14134,8 @@ Accuracy of the neural network model on the test set 0.410418301820755
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h4 id="Limitations-and-future-work">Limitations and future work<a class="anchor-link" href="#Limitations-and-future-work">&#182;</a></h4><p>As we've mentioned above, our model only looks at the linguistic features and the credit history of the person to classify the fake news. For example, fake news might have certain written styles that could be captured by our machine learning algorithms. However, we do not do a fact checking and in fact, fact-checking could be another challenging natural language processing (NLP) task. So a possible autmoated fact-checking pipeline might consist of document retreival from a large corpus or website, extraction of evidence and claim validation. If you are interested in the current NLP research about fact-checking, check out this paper <a href="https://arxiv.org/pdf/1806.07687.pdf">here</a>. Instead of fact-checking, an alternative approach that has been proposed to detect the fake news is to study to propagation model of the fake news on the social media. Previous research has shown that compared to true news, fake news has a distinct pattern of propagation on social media. Sp based on this fact, this year researchers have sucsessfully built a geometric deep learning algorithm for automatic fake news detection, which is a generalization of convolutional neural network to work on graph data. By doing so, their deep learning algorithms could capture some graphical features of the propagation patterns for the spread of fake news that the content-based model cannot do. Check out the paper <a href="https://arxiv.org/pdf/1902.06673.pdf">here</a> if are interested about how their algorithms work.</p>
+<h4 id="Limitations-and-future-work">Limitations and future work<a class="anchor-link" href="#Limitations-and-future-work">&#182;</a></h4><p>As we've mentioned above, our model only looks at the linguistic features and the credit history of the person to classify the fake news. For example, fake news might have certain written styles that could be captured by our machine learning algorithms. However, we do not do a fact-checking and in fact, fact-checking could be another challenging natural language processing (NLP) task. So a possible automated fact-checking pipeline might consist of document retrieval from a large corpus or website, extraction of evidence and then claim validation. If you are interested in the current NLP research about fact-checking, check out this paper <a href="https://arxiv.org/pdf/1806.07687.pdf">here</a>, which will give you an idea of the past NLP researches on automated-fact checking as well as future challenges. <br></p>
+<p>Instead of fact-checking, an alternative approach that has been proposed to detect the fake news is to study to propagation patterns of the fake news on social media. Previous research has shown that compared to true news, fake news has a distinct pattern of propagation on social media. So based on this fact, this year researchers have successfully built a geometric deep learning algorithm for automatic fake news detection, which is a generalization of the convolutional neural network to work on graph data. By doing so, their deep learning algorithms could capture some graphical features of the propagation patterns of the spread of fake news that the content-based model cannot do. Check out the paper <a href="https://arxiv.org/pdf/1902.06673.pdf">here</a> if are interested in how their algorithms work.</p>
 
 </div>
 </div>
@@ -14153,7 +14152,7 @@ Accuracy of the neural network model on the test set 0.410418301820755
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Below is the table of the performance for all each of the machine learning algorithm we use on the training, cross-validation set and test set.</p>
+<p>Below is the table of the performance for each of the machine learning algorithm that we implement in on the cross-validation set and test set.</p>
 
 </div>
 </div>
@@ -14162,7 +14161,7 @@ Accuracy of the neural network model on the test set 0.410418301820755
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><table>
+<table>
   <tr>
     <th>Models</th>
     <th>Validation Set</th>
@@ -14170,27 +14169,25 @@ Accuracy of the neural network model on the test set 0.410418301820755
   </tr>
   <tr>
     <td>K nearest neighbors</td>
-    <td>19.5</td>
     <td>19.4</td>
+    <td>19.2</td>
   </tr>
   <tr>
     <td>Random Forest</td>
-    <td>29.1</td>
-    <td>28.9</td>
+    <td>29.8</td>
+    <td>29.2</td>
   </tr>
   <tr>
     <td>Support Vector Machine</td>
-    <td>39.4</td>
-    <td>36.9</td>
+    <td>38.6</td>
+    <td>36.1</td>
   </tr>
   <tr>
     <td>Neural network</td>
-    <td><span style="font-weight:bold">42.9</span></td>
-    <td><span style="font-weight:bold">41.1</span></td>
+    <td><span style="font-weight:bold">43.3</span></td>
+    <td><span style="font-weight:bold">41.0</span></td>
   </tr>
 </table>
-You might notice the minor difference between the output we report here and the output of the cells above. The results here are actually the average accuracy based on different initializations of random number generators. We do not include these codes in this tutorial because they are too time consuming to run and it doesn't differ much from the output of the cells above. You can verify these results by setting a set of different seed for random number generator in those machine learning algorithms, fitting the models and computing the average of the performance. The code should be straightforward.</p>
-
 </div>
 </div>
 </div>
@@ -14206,7 +14203,7 @@ You might notice the minor difference between the output we report here and the 
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Now, let's consider a different way of model comparison. Instead of measuring their performance on the test set, we will instead do paired t-test. For each pair of algorithms, $A$ and $B$, we have null hypothesis $H_{0}$ be that the accuracy between model $A$ and $B$ are the same. Then we compute the T-statistics and P-values based on their performance (accuracy) on each fold of the 10-fold cross validation. If P-values $p &gt;= 0.05$, we will retain the hypothesis that $A$ and $B$ have the same accuracy. If $p &lt; 0.05$ and t statistics $t &gt; 0$, then we think that model $A$ has better performance than $B$. If $p &lt; 0.05$ and t statistics $t &gt; 0$, then we think that model $B$ has better performance than $A$. In case you haven't seen hypothesis testing before, <a href="https://machinelearningmastery.com/statistical-hypothesis-tests/">here</a> is a great introduction to the statistical hypothesis testing used in machine learning.</p>
+<p>Now, let's consider a different way of model comparison. Instead of measuring their performance on the test set, we will instead do a paired t-test. For each pair of algorithms, $A$ and $B$, we have null hypothesis $H_{0}$ be that the accuracy between model $A$ and $B$ are the same. Then we compute the T-statistics and P-values based on their performance (accuracy) on each fold of the 10-fold cross-validation. If P-values $p &gt;= 0.05$, we will retain the hypothesis that $A$ and $B$ have the same accuracy. If $p &lt; 0.05$ and t statistics $t &gt; 0$, then we think that model $A$ has better performance than $B$. If $p &lt; 0.05$ and t statistics $t &gt; 0$, then we think that model $B$ has better performance than $A$. In case you haven't seen hypothesis testing before, <a href="https://machinelearningmastery.com/statistical-hypothesis-tests/">here</a> is a great introduction to the statistical hypothesis testing used in machine learning.</p>
 
 </div>
 </div>
@@ -14339,7 +14336,7 @@ T statistics: -17.424332408072072 p value of K nearest neighbors vs. Random Fore
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>So from the result, while compared other models with neural network, we always get small p-values and negative T statistics. So we always reject the null hypothesis $H_{0}$ and accept that neural network achieves higher accuracy on our dataset.</p>
+<p>So from the result, while compared to other models, neural network always get small p-values and negative T statistics. So we always reject the null hypothesis $H_{0}$ and accept that neural network achieves higher accuracy on our dataset.</p>
 
 </div>
 </div>
@@ -14348,7 +14345,7 @@ T statistics: -17.424332408072072 p value of K nearest neighbors vs. Random Fore
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>For comparison between different non-deep-learning models, we reject the null hypothesis betweem Random Forest and Support Vector Machine, accpeting that Support Vector Machine achieves a higher accuracy on our dataset than Random Forest. For k nearest neighbors vs. random forest, we still reject the null hypothesis and accept that random forest achieves higher accuracy on our dataset than k nearest neighbors</p>
+<p>For comparison between different non-deep-learning models, we reject the null hypothesis between Random Forest and Support Vector Machine, accepting that Support Vector Machine achieves a higher accuracy on our dataset than Random Forest. For K Nearest Neighbors vs. Random Forest, we still reject the null hypothesis and accept that random forest achieves higher accuracy than k nearest neighbors.</p>
 
 </div>
 </div>
@@ -14373,9 +14370,9 @@ T statistics: -17.424332408072072 p value of K nearest neighbors vs. Random Fore
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>In this tutorial, we go through the general data science pipeline for our fake news dataset, including but not limited to data cleaning, text preprocessing, unsupervised learning, exploratory data analysis and supervised learning to detect the fake news. Based on the doc2vec transformation, We succesfully build a neural fake news detection model that achieves much higher accuracy compared to the original paper. We see that our neural net model could succesfully capture some linguistic features of the fake news claims. But of course, it's far from perfect and there is a huge room for the future improvement for fake news detection, as we've already discussed above. In case you want to learn the current research progress on fake news detection, we also linked several excellent research papper that should give provide you with more insights on this problems.<br>
+<p>In this tutorial, we go through the general data science pipeline for our fake news dataset, including but not limited to data cleaning, text preprocessing, unsupervised learning, exploratory data analysis and supervised learning to detect the fake news. Based on the doc2vec transformation, We successfully build a neural fake news detection model that achieves much higher accuracy compared to the original paper. We see that our neural net model could indeed capture some linguistic features of the fake news claims. But of course, it's far from perfect and there is a huge room for the future improvement for fake news detection, as we've already discussed above. In case you want to learn the current research progress on fake news detection, we also linked several excellent research paper that should give provide you with some deeper insights on this problem.<br>
 <br>
-After reading this tutorial, we see how we could incorporate a lot of those unsupervised learning and visualization tools, such as bag-of-word, tf-idf, doc2vec, TSNE, and latent dirichlet allocation, in order to gain useful insights from the unstructured text data. These techniques should be applicable to most of the other natural language processing tasks as well. <br></p>
+After reading this tutorial, we see how we could incorporate a lot of those unsupervised learning and visualization tools, such as Bag-of-word, Tf-idf, Doc2vec, TSNE, and Latent Dirichlet Allocation, in order to gain useful insights from the unstructured text data. These techniques should be applicable to most of the other natural language processing tasks, as well as other fields of data science. <br></p>
 
 </div>
 </div>
@@ -14384,7 +14381,7 @@ After reading this tutorial, we see how we could incorporate a lot of those unsu
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Thank you for reading! Feel free to email us if you have any questions, criticism or recommendations about the methodology, analysis, clarity of the explanation that we did here.</p>
+<p>Thank you for reading! Feel free to email us if you have any questions, criticism or advice about the methodology, analysis, clarity of the explanation that we did here.</p>
 
 </div>
 </div>
