@@ -11883,7 +11883,7 @@ In the "liar" dataset, it labels each statement into six categories: barely true
 <ul>
 <li>2.1 Visualizing the text: exploratory data analysis <br></li>
 <li>2.2 Doc2vec embedding and visualizaton through dimensional reduction     <br></li>
-<li>2.3 Topic modelling <br></li>
+<li>2.3 Topic modeling <br></li>
 </ul>
 <p>3.Fake news detection with supervised learning algorithms</p>
 <ul>
@@ -12639,7 +12639,7 @@ In addition to the whole corpus of the training set, here we will also construct
                   <span class="ow">and</span> <span class="nb">len</span><span class="p">(</span><span class="n">re</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="n">reg1</span><span class="p">,</span> <span class="n">w</span><span class="p">))</span><span class="o">==</span><span class="mi">0</span> <span class="ow">and</span> <span class="nb">len</span><span class="p">(</span><span class="n">re</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="n">reg2</span><span class="p">,</span> <span class="n">w</span><span class="p">))</span><span class="o">==</span><span class="mi">0</span><span class="p">]</span>
         <span class="c1"># Finally, we lemmatize the document. We prefer lemmatizer here over a stemmer</span>
         <span class="c1"># because it could produce a more readable words, which could be better for </span>
-        <span class="c1"># topic modelling that we will do later</span>
+        <span class="c1"># topic modeling that we will do later</span>
         <span class="n">lemmatizer</span> <span class="o">=</span> <span class="n">WordNetLemmatizer</span><span class="p">()</span>
         <span class="n">tokens</span> <span class="o">=</span> <span class="p">[</span><span class="n">lemmatizer</span><span class="o">.</span><span class="n">lemmatize</span><span class="p">(</span><span class="n">token</span><span class="p">)</span> <span class="k">for</span> <span class="n">token</span> <span class="ow">in</span> <span class="n">tokens</span><span class="p">]</span>
         <span class="n">corpus</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">tokens</span><span class="p">)</span>
@@ -13085,7 +13085,7 @@ Compared to bag-of-word (BoW) model, doc2 embeds the semantics information of th
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>First, we train a doc2vec model on the training corpus. We will train a doc2vec model of vector size 40. We set the window size to be 3, and number of iterations (epochs) to be 40. The hyperparameters that we choose are based on the model's performance on our later supervised learning algorithms. We fine-tune these parameters based on their performance on the cross-validation set. <br>
-Notice that the window size in doc2vec model is the number of words that doc2vec model takes into account as the context for the training word. So, the larger the window size means the model may focus more on the semantic features, and the smaller windows means the model focuses more on the syntax features. Here is a nice intro to <a href="http://mccormickml.com/2016/04/19/word2vec-tutorial-the-skip-gram-model/">skip-gram</a>, which perfectly demonstrates the idea that we are talking here.</p>
+Notice that windows size is an important hyperparameter in the doc2vec model. It is the number of words that doc2vec model takes into account as the context for the training word. So, the larger the window size means the model may focus more on the semantic features, and the smaller windows means the model focuses more on the syntax features. Here is a nice intro to <a href="http://mccormickml.com/2016/04/19/word2vec-tutorial-the-skip-gram-model/">skip-gram</a>, which perfectly demonstrates the idea that we are talking here.</p>
 
 </div>
 </div>
@@ -13250,7 +13250,7 @@ Feel free to check out the original paper <a href="http://www.jmlr.org/papers/vo
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="2.3-Topic-Modelling">2.3 Topic Modelling<a class="anchor-link" href="#2.3-Topic-Modelling">&#182;</a></h3>
+<h3 id="2.3-Topic-Modeling">2.3 Topic Modeling<a class="anchor-link" href="#2.3-Topic-Modeling">&#182;</a></h3>
 </div>
 </div>
 </div>
@@ -13258,7 +13258,7 @@ Feel free to check out the original paper <a href="http://www.jmlr.org/papers/vo
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>In the first section, we've already seen the general topics distribution for this dataset. To get a better understanding of the detailed topics and semantic structures of our dataset, let's apply the topic modelling techniques in this section. Similar to clustering algorithms like k-means, which you might be more familiar with, topic modeling is a frequently used unsupervised learning algorithms for discovering hidden semantic structures in a text body. Intuitively, given that the document is about a particular topic, we would expect particular set of words to appear in the document more or less frequently. For example, "health","care", "Obama" might appear together in the cluster of statements talking about Obamacare. So the topic modelling algorithms are just trying to find such types of latent semantic structures inside the corpus. In this tutorial, we will use Latent Dirichlet Allocation (LDA) algorithms for topic modelling. Notice that LDA algorithm is a probabilistic model, meaning that for each statement, instead of "hard" clustering, we compute the probability of it being every possible topic. So suppose we want to generate a LDA model with number of topics 10, then each output will be a 10-demsional vector, and its $ith$ component is the probability that the statement belongs to topic $i$. Here is a <a href="http://blog.echen.me/2011/08/22/introduction-to-latent-dirichlet-allocation/">gentle introduction to LDA algorithms</a> and the <a href="http://www.jmlr.org/papers/volume3/blei03a/blei03a.pdf">original paper of LDA</a>. Feel free to check them out.</p>
+<p>In the first section, we've already seen the general topics distribution for this dataset. To get a better understanding of the detailed topics and semantic structures of our dataset, let's apply the topic modeling techniques in this section. Similar to clustering algorithms like k-means, which you might be more familiar with, topic modeling is a frequently used unsupervised learning algorithms for discovering hidden semantic structures in a text body. Intuitively, given that the document is about a particular topic, we would expect particular set of words to appear in the document more or less frequently. For example, "health","care", "Obama" might appear together in the cluster of statements talking about Obamacare. So the topic modeling algorithms are just trying to find such types of latent semantic structures inside the corpus. In this tutorial, we will use Latent Dirichlet Allocation (LDA) algorithms for topic modeling. Notice that LDA algorithm is a probabilistic model, meaning that for each statement, instead of "hard" clustering, we compute the probability of it being every possible topic. So suppose we want to generate a LDA model with number of topics 10, then each output will be a 10-demsional vector, and its $ith$ component is the probability that the statement belongs to topic $i$. Here is a <a href="http://blog.echen.me/2011/08/22/introduction-to-latent-dirichlet-allocation/">gentle introduction to LDA algorithms</a> and the <a href="http://www.jmlr.org/papers/volume3/blei03a/blei03a.pdf">original paper of LDA</a>. Feel free to check them out.</p>
 
 </div>
 </div>
@@ -13294,7 +13294,7 @@ Image retreived from <a href="https://medium.com/nanonets/topic-modeling-with-ls
 
 <span class="c1"># Print the average topic coherence score for the training set</span>
 <span class="c1"># Topic coherence scores score basically measures how well </span>
-<span class="c1"># out topic modelling fits the corpus</span>
+<span class="c1"># out topic modeling fits the corpus</span>
 <span class="n">topic_coherence_score</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">([</span><span class="n">t</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">top_topics</span><span class="p">])</span> <span class="o">/</span> <span class="mi">10</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Average topic coherence score for the training corpus: </span><span class="si">%.3f</span><span class="s2">.&quot;</span> <span class="o">%</span> <span class="n">topic_coherence_score</span><span class="p">)</span>
 
