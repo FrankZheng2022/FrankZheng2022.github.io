@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <!-- Meta tags for social media banners, these should be filled in appropriatly as they are your "business card" -->
+  <!-- Replace the content tag with appropriate information -->
+  <meta name="description" content="PRISE: Learning Temporal Action Abstractions as a Sequence Compression Problem">
+  <meta property="og:title" content=""/>
+  <meta property="og:description" content=" "/>
+  <meta property="og:url" content="https://ruijiezheng.com/project/PRISE/index.html"/>
+  <!-- Path to banner image, should be in the path listed below. Optimal dimenssions are 1200X630-->
+  <meta property="og:image" content="videos/prise_demo.mp4" />
+  <meta property="og:image:width" content="1200"/>
+  <meta property="og:image:height" content="630"/>
+
+
+  <meta name="keywords" content="PRISE, Byte-pair Encoding, Pretraining, Sequential Decision Making">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+  <title>PRISE</title>
+  <!-- <link rel="icon" type="image/x-icon" href="favicon.ico"> -->
+  <!-- <link rel="shortcut icon" type="image/x-icon" href="favicon.ico?"> -->
+  <link rel="shortcut icon" type="image/png" href="">
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+  rel="stylesheet">
+
+  <link rel="stylesheet" href="static/css/bulma.min.css">
+  <link rel="stylesheet" href="static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="static/css/fontawesome.all.min.css">
+  <link rel="stylesheet"
+  href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="static/css/index.css">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://documentcloud.adobe.com/view-sdk/main.js"></script>
+  <script defer src="static/js/fontawesome.all.min.js"></script>
+  <script src="static/js/bulma-carousel.min.js"></script>
+  <script src="static/js/bulma-slider.min.js"></script>
+  <script src="static/js/index.js"></script>
+</head>
+<body>
+
+
+  <section class="hero">
+    <div class="hero-body">
+      <div class="container is-max-desktop">
+        <div class="columns is-centered">
+          <div class="column has-text-centered">
+            <h1 class="title is-1 publication-title"><em>PRISE: Learning Temporal Action Abstractions as a Sequence Compression Problem</em>: </h1>
+            <div class="is-size-5 publication-authors">
+              <!-- Paper authors -->
+              <span class="author-block">
+                <a href="https://ruijiezheng.com" target="_blank">Ruijie Zheng</a><sup>1</sup>,</span>
+                <a href="https://www.chinganc.com" target="_blank">Ching-An Cheng</a><sup>2</sup>,</span> <br>
+                <span class="author-block">
+                  <a href="http://users.umiacs.umd.edu/~hal/" target="_blank">Hal Daumé III</a><sup>1,2</sup></span>
+                </span>
+                <span class="author-block">
+                  <a href="https://furong-huang.com" target="_blank">Furong Huang</a><sup>1</sup></span>
+                </span>
+                <span class="author-block">
+                  <a href="" target="_blank">Andrey Kolobov</a><sup>2</sup></span>
+                </span>
+                  
+                  </div>
+
+                  <div class="is-size-5 publication-authors">
+                    <span class="author-block">
+                      University of Maryland, College Park<sup>1</sup> &nbsp;&nbsp;&nbsp;&nbsp; Microsoft Research<sup>2</sup><br>
+                  </div>
+
+                  <div class="column has-text-centered">
+                    <div class="publication-links">
+                         <!-- Arxiv PDF link -->
+                      <span class="link-block">
+                        <!-- <a href="https://arxiv.org/pdf/<ARXIV PAPER ID>.pdf" target="_blank"
+                        class="external-link button is-normal is-rounded is-dark"> -->
+                        <a href="https://arxiv.org/pdf/2402.10450.pdf" target="_blank"
+                          class="external-link button is-normal is-rounded is-dark">
+                        <span class="icon">
+                          <i class="fas fa-file-pdf"></i>
+                        </span>
+                        <span>Paper</span>
+                      </a>
+                    </span>
+
+                  <!-- Github link -->
+                  <span class="link-block">
+                    <a href="https://github.com/FrankZheng2022/PRISE" target="_blank"
+                    class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon">
+                      <i class="fab fa-github"></i>
+                    </span>
+                    <span>Code</span>
+                  </a>
+                </span>
+
+                </a>
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- Teaser video-->
+<section class="hero teaser">
+  <div class="container is-max-desktop">
+    <div class="hero-body">
+      <div class="container">  
+      <video poster="" id="tree" autoplay controls muted loop>
+        <source src="static/videos/prise_demo.mp4" type="video/mp4">
+      </video>
+    </div>  
+    </div>
+  </div>
+</section>
+<!-- End teaser video -->
+
+
+
+<!-- Paper abstract -->
+<section class="section hero is-light">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Abstract</h2>
+        <div class="content has-text-justified">
+          <p>
+            In this work, we propose a novel view that treats inducing temporal action abstractions as a sequence compression problem. To do so, we bring a subtle but critical component of LLM training pipelines -- input tokenization via byte pair encoding (BPE) -- to the seemingly distant task of learning skills of variable time span in continuous control domains.
+            We introduce an approach called Primitive Sequence Encoding (<b>PRISE</b>) that combines continuous action quantization with BPE to learn powerful action abstractions. We empirically show that high-level skills discovered by <b>PRISE</b> from a multitask set of robotic manipulation demonstrations significantly boost the performance of both multitask imitation learning as well as few-shot imitation learning on unseen tasks.
+            <br><br>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- End paper abstract -->
+
+<section class="hero is-small">
+  <div class="hero-body">
+    <div class="container">      
+      <h2 class="title is-3">Method</h2>
+      <div class="text-content" style="text-align: left; margin-bottom: 0px;">
+        <p>The focus of <b>PRISE</b> is to leverage the large multi-task offline dataset to pretrain a vocabulary of skill tokens representing temporally extended low-level policies for downstream control tasks. 
+        The pretraining of PRISE can be divided into two stages. 
+        </p>
+      </div>
+      <div style="margin-bottom: 0px; text-align: center;"> <!-- Adjust the margin as needed -->
+        <img src="static/images/prise_paradigm.png" alt="Description of First Image" style="width: 1000px; display: block; margin: auto;"/> <!-- Adjust width as needed -->
+        <!-- Caption with constrained width -->
+        <div style="max-width: 750px; margin: auto;"> <!-- Adjust max-width as needed -->
+        </div>
+      </div> 
+    
+      <div class="text-content" style="text-align: left; margin-bottom: 20px;">
+        <p>In stage <b>I</b>, <b>PRISE</b> learns a state-dependent action quantization module. This module processes the pretraining multitask dataset D by transforming each of its trajectories – a sequence of ⟨observation, continuous action⟩ pairs – into a sequence of discrete codes, one code per time step, as shown in the Figure on the left.
+        <p>In stage <b>II</b>, <b>PRISE</b> first converts a trajectory of continuous state and actions into discrete codes. Then based on the corpus of quantized trajectories from the multitask offline dataset, <b>PRISE</b> applies the BPE tokenization algorithm to learn vocabulary of skill tokens, where each token represents a sequence of discrete action codes.
+        </p>
+      </div>
+      <div style="margin-bottom: 0px; text-align: center;"> <!-- Adjust the margin as needed -->
+        <img src="static/images/BPE.png" alt="Description of First Image" style="width: 500px; display: block; margin: auto;"/> <!-- Adjust width as needed -->
+        <div style="max-width: 750px; margin: auto;"> <!-- Adjust max-width as needed -->
+        </div>
+      </div> 
+
+
+      <div class="text-content" style="text-align: left; margin-bottom: 20px; margin-top: 20px;">
+        <p>Then during downstream time, the goal is to leverage the pretrained skill token to learn either a generalist multitask policy, or adapt to an unseen task with a few expert demonstration trajectories.
+        <b>PRISE</b> achieves this by learning a <b>skill-token policy π</b>, where it first tokenizes downstream demonstration trajectories by greedily searching for the longest token for each time step, then 
+        optimizes the <b>skill-token policy π</b> by matching its output with the target token with cross entropy loss.
+        </p>
+      </div>
+      <div style="margin-bottom: 0px; text-align: center;"> <!-- Adjust the margin as needed -->
+        <img src="static/images/downstream_adapt.png" alt="Description of First Image" style="width: 1000px; display: block; margin: auto;"/> <!-- Adjust width as needed -->
+        <div style="max-width: 750px; margin: auto;"> <!-- Adjust max-width as needed -->
+        </div>
+      </div> 
+      <div class="text-content" style="text-align: left; margin-bottom: 10px; margin-top: 20px">
+        <p>During evaluation time, <b>PRISE</b> rollout its policy by querying the <b>skill-token policy π</b> for the skill token and then using pretrained decoder ψ to decode raw actions. 
+        The decoder ψ here is finetuned if we are given a new task.
+        </p>
+        
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<section class="hero is-small">
+  <div class="hero-body">
+    <div class="container">      
+      <h2 class="title is-3">Experimental Results</h2>
+      <h4 class="title is-5">Generalist Multitask Policy Learning</h4>
+      <div class="text-content" style="text-align: left; margin-bottom: 20px;">
+        <div style="margin-bottom: 0px; text-align: center;"> <!-- Adjust the margin as needed -->
+          <img src="static/images/libero90.png" alt="test" style="width: 350px; display: inline-block; margin-left: 20px;"/> <!-- Adjust width and margin as needed -->
+          <img src="static/images/multitask_libero90.png" alt="Description of First Image" style="width: 500px; display: inline-block; margin: auto;"/> <!-- Adjust width as needed -->
+          <div style="max-width: 750px; margin: auto;"> <!-- Adjust max-width as needed -->
+          </div>
+        </div>
+        <p> On the challenging LIBERO-90 benchmark, <b>PRISE</b> achieves a significant performance gain compared with the baseline algorithms, demonstrating the significance of temporal action abstraction for knowledge sharing across diverse task.
+        </p>
+      </div>
+
+      <h4 class="title is-5">Five-shot Adaptation to Unseen Tasks</h4>
+      <div class="text-content" style="text-align: left; margin-bottom: 0px;">
+        <div style="margin-bottom: 0px; text-align: center;"> <!-- Adjust the margin as needed -->
+        <img src="static/images/downstream_libero10.png" alt="test" style="width: 400px; display: inline-block; margin-left: 20px;"/> <!-- Adjust width and margin as needed -->
+        <img src="static/images/downstream_metaworld.png" alt="Description of First Image" style="width: 400px; display: inline-block; margin: auto;"/> <!-- Adjust width as needed -->
+        <div style="max-width: 750px; margin: auto;"> <!-- Adjust max-width as needed -->  
+        </div>
+      </div>
+      <p> Additionally, on both MetaWorld and LIBERO, we demonstrate that <b>PRISE</b> pretrained skill tokens significantly improve few-shot imitation learning performance on unseen tasks.
+      </p>
+
+    </div>
+  </div>
+</section>
+
+
+<!--BibTex citation -->
+  <section class="section" id="BibTeX">
+    <div class="container">
+      <h2 class="title">BibTeX</h2>
+      If you find our method or code relevant to your research, please consider citing the paper as follows:
+      <pre><code>@misc{zheng2024prise,
+        title={PRISE: Learning Temporal Action Abstractions as a Sequence Compression Problem}, 
+        author={Ruijie Zheng and Ching-An Cheng and Hal Daumé III au2 and Furong Huang and Andrey Kolobov},
+        year={2024},
+        eprint={2402.10450},
+        archivePrefix={arXiv},
+        primaryClass={cs.LG}
+  }</code></pre>
+    </div>
+</section>
+<!--End BibTex citation -->
+
+
+  <footer class="footer">
+  <div class="container">
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content">
+
+          <p>
+            This page was built using the <a href="https://github.com/eliahuhorwitz/Academic-project-page-template" target="_blank">Academic Project Page Template</a>.          </p>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- Statcounter tracking code -->
+  
+<!-- You can add a tracker to track page visits by creating an account at statcounter.com -->
+
+    <!-- End of Statcounter Code -->
+
+  </body>
+  </html>

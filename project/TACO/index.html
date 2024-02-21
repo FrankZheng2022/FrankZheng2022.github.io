@@ -1,0 +1,320 @@
+
+<!-- saved from url=(0039)https://nicklashansen.github.io/td-mpc/ -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<title>TACO</title>
+	<meta property="og:title" content="TACO">
+	<meta property="og:description" content="Temporal Latent Action-Driven Contrastive Loss for Visual Reinforcement Learning">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=0.2">
+	<link rel="stylesheet" href="./MoVie_files/style.css">
+	<link rel="stylesheet" href="./MoVie_files/css">
+	<link rel="stylesheet" href="./MoVie_files/font-awesome.min.css">
+	<link rel="icon" href="figures/taco.png">
+
+	</script>
+	<script type="text/javascript">
+		function toggle(id) {
+			var e = document.getElementById(id);
+			if(e.style.display == 'block')
+				e.style.display = 'none';
+			else
+				e.style.display = 'block';
+		}
+	</script>
+<style type="text/css">.MJX_Assistive_MathML {position: absolute!important; top: 0; left: 0; clip: rect(1px, 1px, 1px, 1px); padding: 1px 0 0 0!important; border: 0!important; height: 1px!important; width: 1px!important; overflow: hidden!important; display: block!important; -webkit-touch-callout: none; -webkit-user-select: none; -khtml-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none}
+.MJX_Assistive_MathML.MJX_Assistive_MathML_Block {width: 100%!important}
+</style>
+
+<style type="text/css">.MJXp-script {font-size: .8em}
+.MJXp-right {-webkit-transform-origin: right; -moz-transform-origin: right; -ms-transform-origin: right; -o-transform-origin: right; transform-origin: right}
+.MJXp-bold {font-weight: bold}
+.MJXp-italic {font-style: italic}
+.MJXp-largeop {font-size: 150%}
+.MJXp-largeop.MJXp-int {vertical-align: -.2em}
+.MJXp-math {display: inline-block; line-height: 1.2; text-indent: 0; font-family: 'Times New Roman',Times,STIXGeneral,serif; white-space: nowrap; border-collapse: collapse}
+.MJXp-display {display: block; text-align: center; margin: 1em 0}
+.MJXp-math span {display: inline-block}
+.MJXp-box {display: block!important; text-align: center}
+.MJXp-box:after {content: " "}
+.MJXp-rule {display: block!important; margin-top: .1em}
+.MJXp-char {display: block!important}
+.MJXp-mo {margin: 0 .15em}
+.MJXp-mfrac {margin: 0 .125em; vertical-align: .25em}
+.MJXp-denom {display: inline-table!important; width: 100%}
+.MJXp-denom > * {display: table-row!important}
+.MJXp-surd {vertical-align: top}
+.MJXp-surd > * {display: block!important}
+.MJXp-script-box > *  {display: table!important; height: 50%}
+.MJXp-script-box > * > * {display: table-cell!important; vertical-align: top}
+.MJXp-script-box > *:last-child > * {vertical-align: bottom}
+.MJXp-script-box > * > * > * {display: block!important}
+.MJXp-mphantom {visibility: hidden}
+.MJXp-munderover, .MJXp-munder {display: inline-table!important}
+.MJXp-over {display: inline-block!important; text-align: center}
+.MJXp-over > * {display: block!important}
+.MJXp-munderover > *, .MJXp-munder > * {display: table-row!important}
+.MJXp-mtable {vertical-align: .25em; margin: 0 .125em}
+.MJXp-mtable > * {display: inline-table!important; vertical-align: middle}
+.MJXp-mtr {display: table-row!important}
+.MJXp-mtd {display: table-cell!important; text-align: center; padding: .5em 0 0 .5em}
+.MJXp-mtr > .MJXp-mtd:first-child {padding-left: 0}
+.MJXp-mtr:first-child > .MJXp-mtd {padding-top: 0}
+.MJXp-mlabeledtr {display: table-row!important}
+.MJXp-mlabeledtr > .MJXp-mtd:first-child {padding-left: 0}
+.MJXp-mlabeledtr:first-child > .MJXp-mtd {padding-top: 0}
+.MJXp-merror {background-color: #FFFF88; color: #CC0000; border: 1px solid #CC0000; padding: 1px 3px; font-style: normal; font-size: 90%}
+.MJXp-scale0 {-webkit-transform: scaleX(.0); -moz-transform: scaleX(.0); -ms-transform: scaleX(.0); -o-transform: scaleX(.0); transform: scaleX(.0)}
+.MJXp-scale1 {-webkit-transform: scaleX(.1); -moz-transform: scaleX(.1); -ms-transform: scaleX(.1); -o-transform: scaleX(.1); transform: scaleX(.1)}
+.MJXp-scale2 {-webkit-transform: scaleX(.2); -moz-transform: scaleX(.2); -ms-transform: scaleX(.2); -o-transform: scaleX(.2); transform: scaleX(.2)}
+.MJXp-scale3 {-webkit-transform: scaleX(.3); -moz-transform: scaleX(.3); -ms-transform: scaleX(.3); -o-transform: scaleX(.3); transform: scaleX(.3)}
+.MJXp-scale4 {-webkit-transform: scaleX(.4); -moz-transform: scaleX(.4); -ms-transform: scaleX(.4); -o-transform: scaleX(.4); transform: scaleX(.4)}
+.MJXp-scale5 {-webkit-transform: scaleX(.5); -moz-transform: scaleX(.5); -ms-transform: scaleX(.5); -o-transform: scaleX(.5); transform: scaleX(.5)}
+.MJXp-scale6 {-webkit-transform: scaleX(.6); -moz-transform: scaleX(.6); -ms-transform: scaleX(.6); -o-transform: scaleX(.6); transform: scaleX(.6)}
+.MJXp-scale7 {-webkit-transform: scaleX(.7); -moz-transform: scaleX(.7); -ms-transform: scaleX(.7); -o-transform: scaleX(.7); transform: scaleX(.7)}
+.MJXp-scale8 {-webkit-transform: scaleX(.8); -moz-transform: scaleX(.8); -ms-transform: scaleX(.8); -o-transform: scaleX(.8); transform: scaleX(.8)}
+.MJXp-scale9 {-webkit-transform: scaleX(.9); -moz-transform: scaleX(.9); -ms-transform: scaleX(.9); -o-transform: scaleX(.9); transform: scaleX(.9)}
+</style><style type="text/css">.mjx-chtml {display: inline-block; line-height: 0; text-indent: 0; text-align: left; text-transform: none; font-style: normal; font-weight: normal; font-size: 100%; font-size-adjust: none; letter-spacing: normal; word-wrap: normal; word-spacing: normal; white-space: nowrap; float: none; direction: ltr; max-width: none; max-height: none; min-width: 0; min-height: 0; border: 0; margin: 0; padding: 1px 0}
+.MJXc-display {display: block; text-align: center; margin: 1em 0; padding: 0}
+.mjx-chtml[tabindex]:focus, body :focus .mjx-chtml[tabindex] {display: inline-table}
+.mjx-full-width {text-align: center; display: table-cell!important; width: 10000em}
+.mjx-math {display: inline-block; border-collapse: separate; border-spacing: 0}
+.mjx-math * {display: inline-block; -webkit-box-sizing: content-box!important; -moz-box-sizing: content-box!important; box-sizing: content-box!important; text-align: left}
+.mjx-numerator {display: block; text-align: center}
+.mjx-denominator {display: block; text-align: center}
+.MJXc-stacked {height: 0; position: relative}
+.MJXc-stacked > * {position: absolute}
+.MJXc-bevelled > * {display: inline-block}
+.mjx-stack {display: inline-block}
+.mjx-op {display: block}
+.mjx-under {display: table-cell}
+.mjx-over {display: block}
+.mjx-over > * {padding-left: 0px!important; padding-right: 0px!important}
+.mjx-under > * {padding-left: 0px!important; padding-right: 0px!important}
+.mjx-stack > .mjx-sup {display: block}
+.mjx-stack > .mjx-sub {display: block}
+.mjx-prestack > .mjx-presup {display: block}
+.mjx-prestack > .mjx-presub {display: block}
+.mjx-delim-h > .mjx-char {display: inline-block}
+.mjx-surd {vertical-align: top}
+.mjx-mphantom * {visibility: hidden}
+.mjx-merror {background-color: #FFFF88; color: #CC0000; border: 1px solid #CC0000; padding: 2px 3px; font-style: normal; font-size: 90%}
+.mjx-annotation-xml {line-height: normal}
+.mjx-menclose > svg {fill: none; stroke: currentColor}
+.mjx-mtr {display: table-row}
+.mjx-mlabeledtr {display: table-row}
+.mjx-mtd {display: table-cell; text-align: center}
+.mjx-label {display: table-row}
+.mjx-box {display: inline-block}
+.mjx-block {display: block}
+.mjx-span {display: inline}
+.mjx-char {display: block; white-space: pre}
+.mjx-itable {display: inline-table; width: auto}
+.mjx-row {display: table-row}
+.mjx-cell {display: table-cell}
+.mjx-table {display: table; width: 100%}
+.mjx-line {display: block; height: 0}
+.mjx-strut {width: 0; padding-top: 1em}
+.mjx-vsize {width: 0}
+.MJXc-space1 {margin-left: .167em}
+.MJXc-space2 {margin-left: .222em}
+.MJXc-space3 {margin-left: .278em}
+.mjx-chartest {display: block; visibility: hidden; position: absolute; top: 0; line-height: normal; font-size: 500%}
+.mjx-chartest .mjx-char {display: inline}
+.mjx-chartest .mjx-box {padding-top: 1000px}
+.MJXc-processing {visibility: hidden; position: fixed; width: 0; height: 0; overflow: hidden}
+.MJXc-processed {display: none}
+.mjx-test {font-style: normal; font-weight: normal; font-size: 100%; font-size-adjust: none; text-indent: 0; text-transform: none; letter-spacing: normal; word-spacing: normal; overflow: hidden; height: 1px}
+.mjx-test.mjx-test-display {display: table!important}
+.mjx-test.mjx-test-inline {display: inline!important; margin-right: -1px}
+.mjx-test.mjx-test-default {display: block!important; clear: both}
+.mjx-ex-box {display: inline-block!important; position: absolute; overflow: hidden; min-height: 0; max-height: none; padding: 0; border: 0; margin: 0; width: 1px; height: 60ex}
+.mjx-test-inline .mjx-left-box {display: inline-block; width: 0; float: left}
+.mjx-test-inline .mjx-right-box {display: inline-block; width: 0; float: right}
+.mjx-test-display .mjx-right-box {display: table-cell!important; width: 10000em!important; min-width: 0; max-width: none; padding: 0; border: 0; margin: 0}
+.mjx-chtml .mjx-noError {line-height: 1.2; font-size: 90%; text-align: left; color: black; padding: 1px 3px; border: 1px solid}
+.MJXc-TeX-unknown-R {font-family: STIXGeneral,'Cambria Math','Arial Unicode MS',serif; font-style: normal; font-weight: normal}
+.MJXc-TeX-unknown-I {font-family: STIXGeneral,'Cambria Math','Arial Unicode MS',serif; font-style: italic; font-weight: normal}
+.MJXc-TeX-unknown-B {font-family: STIXGeneral,'Cambria Math','Arial Unicode MS',serif; font-style: normal; font-weight: bold}
+.MJXc-TeX-unknown-BI {font-family: STIXGeneral,'Cambria Math','Arial Unicode MS',serif; font-style: italic; font-weight: bold}
+.MJXc-TeX-ams-R {font-family: MJXc-TeX-ams-R,MJXc-TeX-ams-Rw}
+.MJXc-TeX-cal-B {font-family: MJXc-TeX-cal-B,MJXc-TeX-cal-Bx,MJXc-TeX-cal-Bw}
+.MJXc-TeX-frak-R {font-family: MJXc-TeX-frak-R,MJXc-TeX-frak-Rw}
+.MJXc-TeX-frak-B {font-family: MJXc-TeX-frak-B,MJXc-TeX-frak-Bx,MJXc-TeX-frak-Bw}
+.MJXc-TeX-math-BI {font-family: MJXc-TeX-math-BI,MJXc-TeX-math-BIx,MJXc-TeX-math-BIw}
+.MJXc-TeX-sans-R {font-family: MJXc-TeX-sans-R,MJXc-TeX-sans-Rw}
+.MJXc-TeX-sans-B {font-family: MJXc-TeX-sans-B,MJXc-TeX-sans-Bx,MJXc-TeX-sans-Bw}
+.MJXc-TeX-sans-I {font-family: MJXc-TeX-sans-I,MJXc-TeX-sans-Ix,MJXc-TeX-sans-Iw}
+.MJXc-TeX-script-R {font-family: MJXc-TeX-script-R,MJXc-TeX-script-Rw}
+.MJXc-TeX-type-R {font-family: MJXc-TeX-type-R,MJXc-TeX-type-Rw}
+.MJXc-TeX-cal-R {font-family: MJXc-TeX-cal-R,MJXc-TeX-cal-Rw}
+.MJXc-TeX-main-B {font-family: MJXc-TeX-main-B,MJXc-TeX-main-Bx,MJXc-TeX-main-Bw}
+.MJXc-TeX-main-I {font-family: MJXc-TeX-main-I,MJXc-TeX-main-Ix,MJXc-TeX-main-Iw}
+.MJXc-TeX-main-R {font-family: MJXc-TeX-main-R,MJXc-TeX-main-Rw}
+.MJXc-TeX-math-I {font-family: MJXc-TeX-math-I,MJXc-TeX-math-Ix,MJXc-TeX-math-Iw}
+.MJXc-TeX-size1-R {font-family: MJXc-TeX-size1-R,MJXc-TeX-size1-Rw}
+.MJXc-TeX-size2-R {font-family: MJXc-TeX-size2-R,MJXc-TeX-size2-Rw}
+.MJXc-TeX-size3-R {font-family: MJXc-TeX-size3-R,MJXc-TeX-size3-Rw}
+.MJXc-TeX-size4-R {font-family: MJXc-TeX-size4-R,MJXc-TeX-size4-Rw}
+.MJXc-TeX-vec-R {font-family: MJXc-TeX-vec-R,MJXc-TeX-vec-Rw}
+.MJXc-TeX-vec-B {font-family: MJXc-TeX-vec-B,MJXc-TeX-vec-Bx,MJXc-TeX-vec-Bw}
+</style></head>
+
+<head>
+	
+	
+</head>
+
+<body data-new-gr-c-s-check-loaded="14.1107.0" data-gr-ext-installed=""><div style="display: none;"></div><div class="header" id="top">
+	
+
+	<h1>
+		<span style="font-weight: bolder; color:rgb(32, 156, 238)"><img src="figures/taco.jpg" alt="logo" style="width: 70px; height: 70px; margin-right: 7px; margin-bottom: -13px;">TACO:</span>
+		Temporal Latent Action-Driven Contrastive Loss for Visual Reinforcement Learning
+		</h1>
+		<table class="authors">
+            <tbody>
+                <tr>
+                    <td>
+                        <h4>
+                            <a href="https://ruijiezheng.com/" class="nobreak">Ruijie Zheng<sup>1</sup></a>,
+                            <a href="https://si0wang.github.io" class="nobreak">Xiyao Wang<sup>1</sup></a>,<br>
+							<a href="https://ycsun2017.github.io" class="nobreak">Yanchao Sun<sup>1</sup></a>, 
+							<a href="https://www.shuangma.me" class=>Shuang Ma<sup>5</sup></a>,
+							<a href="https://jyzhao.net/" class="nobreak">Jieyu Zhao<sup>12</sup></a>, <br>
+                            <a href="http://hxu.rocks/" class="nobreak">Huazhe Xu<sup>34*</sup></a>,
+							<a href="http://users.umiacs.umd.edu/~hal/" class="nobreak">Hal Daumé III<sup>15*</sup></a>,
+							<a href="http://furong-huang.com/" class="nobreak">Furong Huang<sup>1*</sup></a>
+							<br><br>
+                            <span class="authors-affiliation"><sup>1</sup> University of Maryland, College Park,
+								<sup>2</sup> University of Southern California, <br>
+								<sup>3</sup> Tsinghua University, <sup>4</sup> Shanghai Qi Zhi Institute, <br>
+								<sup>5</sup> Microsoft Research <br>
+								<sup>*</sup> Equal advising</span><br>
+							<a href="https://arxiv.org/pdf/2306.13229.pdf" class="nobreak">[Paper] &nbsp;&nbsp;
+							<a href="https://www.github.com/FrankZheng2022/TACO" class="nobreak">[Code]
+                        </h4>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</div>
+
+<div style="display: flex; flex-direction: column; align-items: center; margin-top: -30px;">
+	<!-- <h3>Deepmind Control Suite</h3> -->
+	<div class="row">
+	  <img src="render/dmc.gif" autoplay style="height: 250px; width: 500px;"></img>
+	  <!-- <img src="render/acrobot_swingup.mp4" autoplay style="height: 120px; width: 120px;"></video>
+	  <img src="render/cheetah_run.mp4" autoplay style="height: 120px; width: 120px;"></video>
+	  <img src="render/finger_turn.mp4" autoplay style="height: 120px; width: 120px;"></video>
+	  <img src="render/hopper_hop.mp4" autoplay style="height: 120px; width: 120px;"></video> -->
+	</div>
+	<!-- <div class="row">
+	  <img src="render/quadruped_run.mp4" autoplay style="height: 120px; width: 120px;"></video>
+	  <img src="render/reach_duplo.mp4" autoplay style="height: 120px; width: 120px;"></video>
+	  <img src="render/reacher_hard.mp4" autoplay style="height: 120px; width: 120px;"></video>
+	  <img src="render/walker_run.mp4" autoplay style="height: 120px; width: 120px;"></video>
+	</div> -->
+  </div>
+</div>
+<br>
+<!-- <h3>Architecture Diagram</h3> -->
+<div class="content">
+	<div class="figure" style="height: 172px; margin-top: -50px; background-image: url(figures/overview.png);"></div>
+	<!-- <div>
+		<br>
+		<br>
+
+		<style>
+			.arrow-icon0 {
+			  display: flex;
+			  align-items: center;
+			  margin-right: 0px;
+			  margin-top: 50;
+			  transform: translateX(-00px); 
+			}
+		  
+			.arrow-icon0 svg {
+			  width: 200px;
+			  height: 200px;
+			  fill: currentColor;
+			}
+		</style>
+
+		</div>
+			
+		<br>
+	</div> -->
+	<div> 
+		<p class="abstract" style="font-size: 1.2em;">
+			We present <span style="font-weight: bolder; color:rgb(32, 156, 238)">TACO</span>, a simple yet effective temporal contrastive learning framework that simultaneously learns 
+			state and action representations. This framework is flexible and could be integrated into both online and offline visual RL algorithms with 
+			minimal changes to the architecture and hyperparameter tuning efforts. 
+		</p>
+	</div>
+	<div class="hr"></div>
+	<div>
+		<h2>Abstract</h2>
+		<p class="abstract" style="font-size: 1.2em;">Despite recent progress in reinforcement learning (RL) from raw pixel data, sample
+			inefficiency continues to present a substantial obstacle. Prior works have attempted to address this challenge by creating 
+			self-supervised auxiliary tasks, aiming to enrich the agent's learned representations with control-relevant information 
+			for future state prediction. However, these objectives are often insufficient to learn representations that 
+			can represent the optimal policy or value function, and they often consider tasks with small, abstract discrete action spaces 
+			and thus overlook the importance of action representation learning in continuous control.
+			In this paper, we introduce <span style="font-weight: bolder; color:rgb(32, 156, 238)">TACO</span>: 
+			<span style="font-weight: bolder; color:rgb(32, 156, 238)">T</span>emporal 
+			<span style="font-weight: bolder; color:rgb(32, 156, 238)">A</span>ction-driven <span style="font-weight: bolder; color:
+			rgb(32, 156, 238)">CO</span>ntrastive Learning, a simple yet powerful 
+			temporal contrastive learning approach that facilitates the concurrent acquisition of latent state and action representations for agents. 
+			<span style="font-weight: bolder; color:rgb(32, 156, 238)">TACO</span> simultaneously learns a state and 
+			an action representation by 
+			optimizing the mutual information between representations of current 
+			states paired with action sequences and representations of the corresponding future states. 
+			Theoretically, <span style="font-weight: bolder; color:rgb(32, 156, 238)">TACO</span> can be shown to learn 
+			state and action representations that encompass sufficient information for control, thereby 
+			improving sample efficiency. For online RL, <span style="font-weight: bolder; color:rgb(32, 156, 238)">TACO</span> 
+			achieves <span style="font-weight: bolder;">40%</span> performance boost 
+			after one million environment interaction steps on average
+			across nine challenging visual continuous control tasks from Deepmind Control Suite. In addition, we show that
+			<span style="font-weight: bolder; color:rgb(32, 156, 238)">TACO</span> can also serve as a 
+			plug-and-play module adding to existing offline visual RL methods to establish the new state-of-the-art performance for offline visual RL 
+			across offline datasets with varying quality. 
+		</p>
+	</div>
+	<h2>Online Visual RL</h2>
+	<div class="figure" style="height: 350px; background-image: url(figures/online_rl_performance.png);"></div>
+	<div class="figure" style="height: 550px; background-image: url(figures/online_rl_curve.png);"></div>
+
+	<div>
+	<h2>Offline Visual RL</h2>
+	<p class="abstract" style="font-size: 1.2em;">
+		<span style="font-weight: bolder; color:rgb(32, 156, 238)">TACO</span> could also easily combine with existing strong offline RL algorithms such as 
+	CQL and and TD3+BC to further improve their performance. (The average normalized score here is the average score across 8 offline datasets on 4 selected 
+	challenging tasks from Deepmind Control Suite.)
+	</p>
+	<div class="figure" style="height: 300px; background-image: url(figures/offline_rl_performance.png);"></div>
+	</div>
+
+
+
+
+
+</body><grammarly-desktop-integration data-grammarly-shadow-root="true"><template shadowrootmode="open"><style>
+  div.grammarly-desktop-integration {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select:none;
+    user-select:none;
+  }
+
+  div.grammarly-desktop-integration:before {
+    content: attr(data-content);
+  }
+</style><div aria-label="grammarly-integration" role="group" tabindex="-1" class="grammarly-desktop-integration" data-content="{&quot;mode&quot;:&quot;full&quot;,&quot;isActive&quot;:true,&quot;isUserDisabled&quot;:false}"></div></template></grammarly-desktop-integration></html>

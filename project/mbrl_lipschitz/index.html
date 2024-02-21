@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+
+  </head>
+<head>
+  <!-- Title -->
+  <title>Is Model Ensemble Necessary? Model-based RL via a Single Model with Lipschitz Regularized Value Function</title>
+
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="Model-based Reinforcement Learning with Lipchitz Regularized Value Function">
+  <meta name="keywords" content="model-based RL">
+
+  <!-- Bootstrap core CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <!-- https://fontawesome.com/cheatsheet -->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.rawgit.com/jpswalsh/academicons/master/css/academicons.min.css">
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-124898353-1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'UA-124898353-1');
+  </script>
+
+
+</head>
+
+
+<body>
+  <!-- <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark"> -->
+  <nav class="navbar navbar-expand-md fixed-top navbar-dark" style="background-color: #1631c7;">
+    <a class="navbar-brand" href="#">Is Model Ensemble Necessary? Model-based RL via a Single Model with Lipschitz Regularized Value Function </a>
+
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggle">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarToggle">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="#">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#Abstract">Abstract</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#Insight">Key Insight</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#Method">Methods</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#Results">Results</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#Poster">Poster</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+  <div class="container" style="padding-top: 80px; font-size: 20px">
+    <div align="center">
+      <h2 class="text-center" align="center">
+        Is Model Ensemble Necessary? <br> Model-based RL via a Single Model with Lipschitz Regularized Value Function
+      </h2><br>
+      <h6>
+      <!--  <a href="https://people.csail.mit.edu/jiex">Jie Xu</a><sup>1</sup>&nbsp;&nbsp;&nbsp;&nbsp;  -->
+      Ruijie Zheng *</a><sup>1</sup>&nbsp;&nbsp;&nbsp;&nbsp;
+      Xiyao Wang *</a><sup>1</sup>&nbsp;&nbsp;&nbsp;&nbsp;
+      Huazhe Xu</a><sup>2,3</sup>&nbsp;&nbsp;&nbsp;&nbsp;
+      Furong Huang</a><sup>1</sup>&nbsp;&nbsp;&nbsp;&nbsp;
+      </h6>
+      <small><sup>1</sup> University of Maryland College Park &nbsp;&nbsp;&nbsp;&nbsp; <sup>2</sup>  Tsinghua University &nbsp;&nbsp;&nbsp;&nbsp; <sup>3</sup>  Shanghai Qi Zhi Institute
+
+<br><br>
+
+
+
+
+
+  <!-- Abstract -->
+  <div class="container">
+    <center><h4 id="Abstract" style="padding-top: 70px; margin-top: -80px; ">Abstract</h4><hr>
+    <div style="text-align: justify">
+      Probabilistic dynamics model ensemble is widely used in existing model-based reinforcement learning methods as it outperforms a single dynamics model in both asymptotic performance and sample efficiency.
+      In this paper, we provide both practical and theoretical insights on the empirical success of the probabilistic dynamics model ensemble through the lens of Lipschitz continuity.
+      We find that, for a value function, the stronger the Lipschitz condition is, the smaller the gap between the true dynamics- and learned dynamics-induced Bellman operators is,
+      thus enabling the converged value function to be closer to the optimal value function.
+      Hence, we hypothesize that the key functionality of the probabilistic dynamics model ensemble is to regularize the Lipschitz condition of the value function using generated samples.
+      To validate this hypothesis, we devise two practical robust training mechanisms through computing the adversarial noise and regularizing the value network’s spectral norm to directly regularize the Lipschitz condition of the value functions. Empirical results show that combined with our mechanisms, model-based RL algorithms with a single dynamics model outperform those with ensemble of the probabilistic dynamics models. These findings not only support the theoretical insight, but also provide a practical solution for developing computationally efficient model-based RL algorithms.
+    </div>
+  </div><br><br>
+
+
+
+
+
+
+  <!-- Experiments: show our experimental results -->
+  <div class="container">
+    <h4 id="mbrl_recipe" style="padding-top: 70px; margin-top: -80px; ">Recipe of model-based RL algorithm</h4><hr>
+    <div style="text-align: justify">
+      <!-- <center><b>Recipe of model-based RL algorithm</b><br></center> -->
+<div class="container" style="padding-top: 10px; font-size: 20px">
+
+<center><img src="mbrl.gif" alt="mbrl.gif" style="width:50%;"></center>
+
+</div>
+  </div><br><br>
+
+  <h4 id="Insight" style="padding-top: 70px; margin-top: -80px; ">An Empirical Observation</h4><hr>
+  <!-- <center><b>An Empirical Observation</b><br></center> -->
+  <div style="text-align: justify">
+    Empirically, we find that MBPO [1] with an ensemble of probabilistic dynamics models performs significantly better than using only a single model or an ensemble of deterministic models.
+    The figure on the left is the learning curve on the Humanoid environment, and the figure on the right is on the Walker2d environment.
+    We also observe similar results across every other Mujoco environment.
+    <div class="container" style="padding-top: 10px; font-size: 10px">
+  <div align="center">
+      <div class="center">
+<img class="img-responsive img-rounded" src="legend_mbpo.png" style="width:65%; height:65%" alt=""><br>
+  <img class="img-responsive img-rounded" src="humanoid_mbpo.png" style="width:25%; height:25%" alt="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <img class="img-responsive img-rounded" src="walker_mbpo.png" style="width:25%; height:25%" alt="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</div>
+</div></div><br><br>
+
+<center><h4 id="insight" style="padding-top: 70px; margin-top: -80px; ">Key Insight</h4><hr></center>
+<center><b>An Important Concept: value-aware model error</b><br></center>
+<div style="text-align: justify">
+  For a model-based RL algorithm, even if the trained environment model gives a very accurate prediction,
+  the error could still be amplified by the so-called value-aware model error [2] if the agent's value function
+  has a very bad Lipschitz condition.
+  <div class="container" style="padding-top: 10px; font-size: 20px">
+    <div align="center">
+        <div class="center">
+    <img class="img-responsive img-rounded" src="vaml.png" style="width:50%; height:50%" alt="">&nbsp;&nbsp;
+  </div>
+  </div>
+</div><br>
+
+  <center><b>Lipschitz Regularization of Value Function by Probabilistic Model Ensemble</b><br></center>
+  <div style="text-align: justify">
+    <ul>
+      <li>Value functions trained based on data generated from probabilistic ensemble model
+      have much <b>smaller Lipschitz constants</b> (the figure on the left).</li>
+      <li>We can view data generated from the probabilistic ensemble model as an implicit augmentation.
+        The augmentation comes from two sources, either variation of predictions across different models in the ensemble, or
+        the noise added by the variance of each probabilistic distribution (e.x. Gaussian distribution in MBPO[1]).
+      </li>
+      <li>We verified our hypothesis empirically, and indeed we find that Lipschitz constant of the value function trained from probabilistic ensemble model
+        is significantly smaller (the figure on the right). </li>
+    </ul>
+
+    <!-- Here the key insight is that for a value functions trained based on data generated from <b>an ensemble of probabilistic environment models</b>,
+    it will have a much <b>smaller Lipschitz constant</b>. <br>
+    This is because we can view data generated from the probabilistic ensemble model
+    as an implicit augmentation. The augmentation comes from two sources: (i) variation of prediction across different models in the ensemble and
+    (ii) the noise added by the variance of each probabilistic distribution (e.x. Gaussian distribution in MBPO[1]). <br>
+    Empirically we verified our hypothesis on MuJoCo environments
+    and we observe that indeed, Lipschitz constant of the value function trained from probabilistic ensemble model is significantly smaller,
+    and it also have a significantly smaller value-aware model error. -->
+    <div class="container" style="padding-top: 10px; font-size: 10px">
+      <div align="center">
+          <div class="center">
+      <img class="img-responsive img-rounded" src="legend_vaml.png" style="width:65%; height:65%" alt=""><br>
+      <img class="img-responsive img-rounded" src="humanoid_vaml.png" style="width:25%; height:25%" alt="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      <img class="img-responsive img-rounded" src="humanoid_lipschitz.png" style="width:25%; height:25%" alt="">&nbsp;&nbsp;
+    </div>
+    </div>
+    </div>
+<br></br>
+<center><h4 id="Method" style="padding-top: 70px; margin-top: -80px; ">Our Proposed Methods</h4><hr></center>
+The probabilistic model ensemble achieves great empirical performance. However, it is expensive both in terms of computational time and cost as well as memory overhead.
+Given that the key functionality of model-ensemble is to regularize the Lipschitz constant of value functions,
+we devise two different approaches to directly regularize the Lipschitz constant of the value function.
+<br>
+<ol>
+  <li><b>Spectral Normalization:</b> We add spectral normalization to every layer of the value network to
+    control the upper bound of the global Lipschitz constant.
+</li>
+  <li><b>Robust Regularization:</b> We add a robust loss with adversarial perturbation to guarantee that the variation of the value function locally is small.
+    <div class="container" style="padding-top: 5px; font-size: 10px">
+      <div align="center">
+        <div class="center">
+    <img class="img-responsive img-rounded" src="robust_reg_1.png" style="width:50%; height:50%" alt="">&nbsp;&nbsp;&nbsp;&nbsp;<br>
+    <img class="img-responsive img-rounded" src="robust_reg_2.png" style="width:60%; height:60%" alt="">&nbsp;&nbsp;&nbsp;&nbsp;
+    </div>
+    </div>
+    </div>
+</li>
+</ol>
+<br>
+
+<center><h4 id="Results" style="padding-top: 70px; margin-top: -80px; ">Results</h4><hr></center>
+<center><b>Improved Asymptotic Performance</b><br></center>
+Using just a single deterministic model, MBPO with our two Lipschitz regularization mechanisms achieves a
+comparable and even better performance across all five tasks than MBPO with a probabilistic ensemble model.
+In particular, the proposed robust regularization technique shows a larger advantage on three more sophisticated tasks: Humanoid, Ant,
+and Walker.
+<br>
+<div class="container" style="padding-top: 10px; font-size: 10px">
+<div align="center">
+    <div class="center">
+<img class="img-responsive img-rounded" src="legend.png" style="width:70%; height:70%" alt=""><br>
+<img class="img-responsive img-rounded" src="ant.png" style="width:22%; height:22%" alt="">&nbsp;&nbsp;&nbsp;&nbsp;
+<img class="img-responsive img-rounded" src="humanoid.png" style="width:22%; height:22%" alt="">&nbsp;&nbsp;&nbsp;&nbsp;
+<img class="img-responsive img-rounded" src="walker.png" style="width:22%; height:22%" alt="">&nbsp;&nbsp;&nbsp;&nbsp;
+<img class="img-responsive img-rounded" src="hopper.png" style="width:22%; height:22%" alt="">&nbsp;&nbsp;&nbsp;&nbsp;
+</div>
+</div></div>
+<br>
+<center><b>Improved Time Efficiency</b><br></center>
+Compared with MBPO using an ensemble of probabilistic models, our proposed mechanisms, especially robust regularization, is more time efficient.
+<br>
+<div class="container" style="padding-top: 10px; font-size: 10px">
+<div align="center">
+    <div class="center">
+  <img class="img-responsive img-rounded" src="time_table.png" style="width:28%; height:30%" alt="">&nbsp;&nbsp;&nbsp;&nbsp;
+</div>
+</div></div>
+<br>
+
+<center><h4 id="Poster" style="padding-top: 70px; margin-top: -80px; ">Poster</h4><hr></center>
+<div align="center">
+    <div class="center">
+  <img class="img-responsive img-rounded" src="poster.png" style="width:100%; height:100%" alt="">&nbsp;&nbsp;&nbsp;&nbsp;
+</div>
+</div>
+<br><br>
+
+<center><h4 id="Reference" style="padding-top: 70px; margin-top: -80px; ">Reference</h4><hr></center>
+[1] Janner et al. When to Trust Your Model: Model-Based Policy Optimization. NeurIPS 2019 <br>
+[2] Farahmand et al. Iterative Value-Aware Model Learning. NeurIPS 2018 <br><br>
+  <!-- Footer -->
+  <div class="container col-md-9">
+    <hr>
+    <center>
+      <footer>
+        <p>© University of Maryland College Park 2022</p>
+      </footer>
+    </center>
+  </div>
+
+
+  <!-- Bootstrap core JavaScript -->
+  <!-- Placed at the end of the document so the pages load faster -->
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
+
+</body>
+
+</html>
