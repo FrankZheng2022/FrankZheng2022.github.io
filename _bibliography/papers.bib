@@ -1,85 +1,146 @@
----
----
 
-@string{aps = {American Physical Society,}}
-
-@book{einstein1956investigations,
-  bibtex_show={true},
-  title={Investigations on the Theory of the Brownian Movement},
-  author={Einstein, Albert},
-  year={1956},
-  publisher={Courier Corporation},
-  preview={brownian-motion.gif}
+@inproceedings{zheng2024prise,
+      abbr={Preprint},
+      title={PRISE: Learning Temporal Action Abstractions as a Sequence Compression Problem}, 
+      author={Ruijie Zheng and Ching-An Cheng and Hal Daumé III and Furong Huang and Andrey Kolobov},
+      year={2024},
+      booktitle={Preprint. The short version is presented as spotlight talk at CoRL 2023 Pre-Training for Robot Learning Workshop},
+      abstract={Temporal action abstractions, along with belief state representations, are a powerful knowledge sharing mechanism for sequential decision making. In this work, we propose a novel view that treats inducing temporal action abstractions as a sequence compression problem. To do so, we bring a subtle but critical component of LLM training pipelines -- input tokenization via byte pair encoding (BPE) -- to the seemingly distant task of learning skills of variable time span in continuous control domains. We introduce an approach called Primitive Sequence Encoding (PRISE) that combines continuous action quantization with BPE to learn powerful action abstractions. We empirically show that high-level skills discovered by PRISE from a multitask set of robotic manipulation demonstrations significantly boost the performance of both multitask imitation learning as well as few-shot imitation learning on unseen tasks.},
+      primaryClass={cs.LG},
+      selected={true},
+      html={https://ruijiezheng.com/project/PRISE/index.html},
 }
 
-@article{einstein1950meaning,
-  abbr={AJP},
-  bibtex_show={true},
-  title={The meaning of relativity},
-  author={Einstein, Albert and Taub, AH},
-  journal={American Journal of Physics},
-  volume={18},
-  number={6},
-  pages={403--404},
-  year={1950},
-  publisher={American Association of Physics Teachers}
+@inproceedings{zheng2024premiertaco,
+      abbr={Preprint},
+      title={Premier-TACO is a Few-Shot Policy Learner: Pretraining Multitask Representation via Temporal Action-Driven Contrastive Loss}, 
+      author={Ruijie Zheng and Yongyuan Liang and Xiyao Wang and Shuang Ma and Hal Daumé III and Huazhe Xu and John Langford and Praveen Palanisamy and Kalyan Shankar Basu and Furong Huang},
+      abstract={We present Premier-TACO, a multitask feature representation learning approach designed to improve few-shot policy learning efficiency in sequential decision-making tasks. Premier-TACO leverages a subset of multitask offline datasets for pretraining a general feature representation, which captures critical environmental dynamics and is fine-tuned using minimal expert demonstrations. It advances the temporal action contrastive learning (TACO) objective, known for state-of-the-art results in visual control tasks, by incorporating a novel negative example sampling strategy. This strategy is crucial in significantly boosting TACO's computational efficiency, making large-scale multitask offline pretraining feasible. Our extensive empirical evaluation in a diverse set of continuous control benchmarks including Deepmind Control Suite, MetaWorld, and LIBERO demonstrate Premier-TACO's effectiveness in pretraining visual representations, significantly enhancing few-shot imitation learning of novel tasks.},
+      year={2024},      
+      booktitle={Preprint. Accepted at NeurIPS 2023 Foundation Models for Decision Making Workshop},
+      primaryClass={cs.LG},
+      html={https://www.premiertaco.github.io},
+      selected={true},
 }
 
-@article{PhysRev.47.777,
-  abbr={PhysRev},
-  title={Can Quantum-Mechanical Description of Physical Reality Be Considered Complete?},
-  author={Einstein, A. and Podolsky, B. and Rosen, N.},
-  abstract={In a complete theory there is an element corresponding to each element of reality. A sufficient condition for the reality of a physical quantity is the possibility of predicting it with certainty, without disturbing the system. In quantum mechanics in the case of two physical quantities described by non-commuting operators, the knowledge of one precludes the knowledge of the other. Then either (1) the description of reality given by the wave function in quantum mechanics is not complete or (2) these two quantities cannot have simultaneous reality. Consideration of the problem of making predictions concerning a system on the basis of measurements made on another system that had previously interacted with it leads to the result that if (1) is false then (2) is also false. One is thus led to conclude that the description of reality as given by a wave function is not complete.},
-  journal={Phys. Rev.},
-  volume={47},
-  issue={10},
-  pages={777--780},
-  numpages={0},
-  year={1935},
-  month={May},
-  publisher=aps,
-  doi={10.1103/PhysRev.47.777},
-  url={http://link.aps.org/doi/10.1103/PhysRev.47.777},
-  html={https://journals.aps.org/pr/abstract/10.1103/PhysRev.47.777},
-  pdf={example_pdf.pdf},
-  altmetric={248277},
-  dimensions={true},
-  google_scholar_id={qyhmnyLat1gC},
-  selected={true}
+
+@inproceedings{drm,
+    abbr={ICLR 2024},
+    title={DrM: Mastering Visual Reinforcement Learning through Dormant Ratio Minimization}, 
+    author={Guowei* Xu and Ruijie* Zheng and Yongyuan* Liang and Xiyao Wang and Zhecheng Yuan and Tianying Ji and Yu Luo and Xiaoyu Liu and Jiaxin Yuan and Pu Hua and Shuzhen Li and Yanjie Ze and Hal Daumé III and Furong Huang and Huazhe Xu},
+    year={2024},
+    abstract={Visual reinforcement learning (RL) has shown promise in continuous control tasks. Despite its progress, current algorithms are still unsatisfactory in virtually every aspect of the performance such as sample efficiency, asymptotic performance, and their robustness to the choice of random seeds. In this paper, we identify a major shortcoming in existing visual RL methods that is the agents often exhibit sustained inactivity during early training, thereby limiting their ability to explore effectively. Expanding upon this crucial observation, we additionally unveil a significant correlation between the agents' inclination towards motorically inactive exploration and the absence of neuronal activity within their policy networks. To quantify this inactivity, we adopt dormant ratio as a metric to measure inactivity in the RL agent's network. Empirically, we also recognize that the dormant ratio can act as a standalone indicator of an agent's activity level, regardless of the received reward signals. Leveraging the aforementioned insights, we introduce DrM, a method that uses three core mechanisms to guide agents' exploration-exploitation trade-offs by actively minimizing the dormant ratio. Experiments demonstrate that DrM achieves significant improvements in sample efficiency and asymptotic performance with no broken seeds (76 seeds in total) across three continuous control benchmark environments, including DeepMind Control Suite, MetaWorld, and Adroit. Most importantly, DrM is the first model-free algorithm that consistently solves tasks in both the Dog and Manipulator domains from the DeepMind Control Suite as well as three dexterous hand manipulation tasks without demonstrations in Adroit, all based on pixel observations.},
+    booktitle={International Conference on Learning Representations (<b>Spotlight (5%)</b>)},
+    url={https://arxiv.org/pdf/2310.19668.pdf},
+    html={https://drm-rl.github.io},
+    primaryClass={cs.LG},
+    selected={true}
 }
 
-@article{einstein1905molekularkinetischen,
-  title={{\"U}ber die von der molekularkinetischen Theorie der W{\"a}rme geforderte Bewegung von in ruhenden Fl{\"u}ssigkeiten suspendierten Teilchen},
-  author={Einstein, A.},
-  journal={Annalen der physik},
-  volume={322},
-  number={8},
-  pages={549--560},
-  year={1905},
-  publisher={Wiley Online Library}
+@inproceedings{wang2024coplanner,
+      title={{COP}lanner: Plan to Roll Out Conservatively but to Explore Optimistically for Model-Based {RL}},
+      author={Xiyao Wang and Ruijie Zheng and Yanchao Sun and Ruonan Jia and Wichayaporn Wongkamjan and Huazhe Xu and Furong Huang},
+      booktitle={The Twelfth International Conference on Learning Representations},
+      year={2024},
+      url={https://openreview.net/forum?id=jnFcKjtUPN}
 }
 
-@article{einstein1905movement,
-  abbr={Ann. Phys.},
-  title={Un the movement of small particles suspended in statiunary liquids required by the molecular-kinetic theory 0f heat},
-  author={Einstein, A.},
-  journal={Ann. Phys.},
-  volume={17},
-  pages={549--560},
-  year={1905}
+@inproceedings{
+      liang2023gametheoretic,
+      title={Game-Theoretic Robust Reinforcement Learning Handles Temporally-Coupled Perturbations},
+      author={Yongyuan Liang and Yanchao Sun and Ruijie Zheng and Xiangyu Liu and Tuomas Sandholm and Furong Huang and Stephen Marcus McAleer},
+      booktitle={The Second Workshop on New Frontiers in Adversarial Machine Learning},
+      year={2023},
+      url={https://openreview.net/forum?id=hbu7Xd5mR9}
 }
 
-@article{einstein1905electrodynamics,
-  title={On the electrodynamics of moving bodies},
-  author={Einstein, A.},
-  year={1905}
+@inproceedings{zheng2023taco,
+   abbr={NeurIPS 2023},
+   title={TACO: Temporal Latent Action-Driven Contrastive Loss for Visual Reinforcement Learning},
+   author={Ruijie Zheng and Xiyao Wang and Yanchao Sun and Shuang Ma and Jieyu Zhao and Huazhe Xu and Hal Daumé and Furong Huang},
+   abstract={Despite recent progress in reinforcement learning (RL) from raw pixel data, sample inefficiency continues to present a substantial obstacle. Prior works have attempted to address this challenge by creating self-supervised auxiliary tasks, aiming to enrich the agent's learned representations with control-relevant information for future state prediction. However, these objectives are often insufficient to learn representations that can represent the optimal policy or value function, and they often consider tasks with small, abstract discrete action spaces and thus overlook the importance of action representation learning in continuous control. In this paper, we introduce TACO: Temporal Action-driven Contrastive Learning, a simple yet powerful temporal contrastive learning approach that facilitates the concurrent acquisition of latent state and action representations for agents. TACO simultaneously learns a state and an action representation by optimizing the mutual information between representations of current states paired with action sequences and representations of the corresponding future states. Theoretically, TACO can be shown to learn state and action representations that encompass sufficient information for control, thereby improving sample efficiency. For online RL, TACO achieves 40% performance boost after one million environment interaction steps on average across nine challenging visual continuous control tasks from Deepmind Control Suite. In addition, we show that TACO can also serve as a plug-and-play module adding to existing offline visual RL methods to establish the new state-of-the-art performance for offline visual RL across offline datasets with varying quality.},
+   year={2023},
+   booktitle={Advances in Neural Information Processing Systems},
+   url={https://arxiv.org/abs/2306.13229},
+   html={https://ruijiezheng.com/project/TACO/index.html},
+   selected={true}
+ }
+
+@inproceedings{zheng2023model,
+  abbr={ICLR 2023},
+  title={Is Model Ensemble Necessary? Model-based RL via a Single Model with Lipschitz Regularized Value Function},
+  author={Ruijie Zheng and Xiyao Wang and Huazhe Xu and Furong Huang},
+  abstract={Probabilistic dynamics model ensemble is widely used in existing model-based reinforcement learning methods as it outperforms a single dynamics model in both asymptotic performance and sample efficiency. In this paper, we provide both practical and theoretical insights on the empirical success of the probabilistic dynamics model ensemble through the lens of Lipschitz continuity. We find that, for a value function, the stronger the Lipschitz condition is, the smaller the gap between the true dynamics- and learned dynamics-induced Bellman operators is, thus enabling the converged value function to be closer to the optimal value function. Hence, we hypothesize that the key functionality of the probabilistic dynamics model ensemble is to regularize the Lipschitz condition of the value function using generated samples. To validate this hypothesis, we devise two practical robust training mechanisms through computing the adversarial noise and regularizing the value network’s spectral norm to directly regularize the Lipschitz condition of the value functions. Empirical results show that combined with our mechanisms, model-based RL algorithms with a single dynamics model outperform those with ensemble of the probabilistic dynamics models. These findings not only support the theoretical insight, but also provide a practical solution for developing computationally efficient model-based RL algorithms.},
+  year={2023},
+  booktitle={International Conference on Learning Representations},
+  publisher={Spotlight Presentation at NeurIPS 2022 DeepRL Workshop},
+  url={https://openreview.net/forum?id=hNyJBk3CwR},
+  add={<b> Spotlight Presentation </b> at NeurIPS 2022 DeepRL Workshop},
+  html={http://FrankZheng2022.github.io/project/mbrl_lipschitz/index.html},
+  selected={true},
 }
 
-@book{przibram1967letters,
-  bibtex_show={true},
-  title={Letters on wave mechanics},
-  author={Einstein, Albert and Schrödinger, Erwin and Planck, Max and Lorentz, Hendrik Antoon and Przibram, Karl},
-  year={1967},
-  publisher={Vision},
-  preview={wave-mechanics.gif}
+@inproceedings{2023marl,
+abbr={ICLR 2023},
+title={Certifiably Robust Policy Learning against Adversarial Multi-Agent Communication},
+author={Yanchao Sun and Ruijie Zheng and Parisa Hassanzadeh and Yongyuan Liang and Soheil Feizi and Sumitra Ganesh and Furong Huang},
+booktitle={International Conference on Learning Representations},
+year={2023},
+abstract={Communication is important in many multi-agent reinforcement learning (MARL) problems for agents to share information and make good decisions. However, when deploying trained communicative agents in a real-world application where noise and potential attackers exist, the safety of communication-based policies becomes a severe issue that is underexplored. Specifically, if communication messages are manipulated by malicious attackers, agents relying on untrustworthy communication may take unsafe actions that lead to catastrophic consequences. Therefore, it is crucial to ensure that agents will not be misled by corrupted communication, while still benefiting from benign communication. In this work, we consider an environment with N agents, where the attacker may arbitrarily change the communication from any C<\frac{N-1}{2} agents to a victim agent. For this strong threat model, we propose a certifiable defense by constructing a message-ensemble policy that aggregates multiple randomly ablated message sets. Theoretical analysis shows that this message-ensemble policy can utilize benign communication while being certifiably robust to adversarial communication, regardless of the attacking algorithm. Experiments in multiple environments verify that our defense significantly improves the robustness of trained policies against various types of attacks.},
+html={https://openreview.net/forum?id=dCOL0inGl3e},
+selected={true},
+add={none},
 }
+
+@InProceedings{dualmind,
+    abbr={ICCV 2023},
+    author    = {Wei, Yao and Sun, Yanchao and Zheng, Ruijie and Vemprala, Sai and Bonatti, Rogerio and Chen, Shuhang and Madaan, Ratnesh and Ba, Zhongjie and Kapoor, Ashish and Ma, Shuang},
+    title     = {Is Imitation All You Need? Generalized Decision-Making with Dual-Phase Training},
+    booktitle = {Proceedings of the IEEE/CVF International Conference on Computer Vision (ICCV)},
+    month     = {October},
+    year      = {2023},
+    pages     = {16221-16231},
+    abstract  = {We introduce DualMind, a generalist agent designed to tackle various decision-making tasks that addresses challenges posed by current methods, such as overfitting behaviors and dependence on task-specific fine-tuning. DualMind uses a novel "Dual-phase" training strategy that emulates how humans learn to act in the world. The model first learns fundamental common knowledge through a self-supervised objective tailored for control tasks and then learns how to make decisions based on different contexts through imitating behaviors conditioned on given prompts. DualMind can handle tasks across domains, scenes, and embodiments using just a single set of model weights and can execute zero-shot prompting without requiring task-specific fine-tuning. We evaluate DualMind on MetaWorld and Habitat through extensive experiments and demonstrate its superior generalizability compared to previous techniques, outperforming other generalist agents by over 50% and 70% on Habitat and MetaWorld, respectively. On the 45 tasks in MetaWorld, DualMind achieves over 30 tasks at a 90% success rate. Our source code is available at https://github.com/yunyikristy/DualMind.},
+    html = {https://arxiv.org/abs/2307.07909},
+}
+
+@inproceedings{2022who,
+abbr={ICLR 2022},
+title={Who Is the Strongest Enemy? Towards Optimal and Efficient Evasion Attacks in Deep {RL}},
+author={Yanchao Sun and Ruijie Zheng and Yongyuan Liang and Furong Huang},
+booktitle={International Conference on Learning Representations},
+year={2022},
+url={https://openreview.net/forum?id=JM2kFbJvvI},
+abstract={Evaluating the worst-case performance of a reinforcement learning (RL) agent under the strongest/optimal adversarial perturbations on state observations (within some constraints) is crucial for understanding the robustness of RL agents. However, finding the optimal adversary is challenging, in terms of both whether we can find the optimal attack and how efficiently we can find it. Existing works on adversarial RL either use heuristics-based methods that may not find the strongest adversary, or directly train an RL-based adversary by treating the agent as a part of the environment, which can find the optimal adversary but may become intractable in a large state space. This paper introduces a novel attacking method to find the optimal attacks through collaboration between a designed function named "actor" and an RL-based learner named "director'". The actor crafts state perturbations for a given policy perturbation direction, and the director learns to propose the best policy perturbation directions. Our proposed algorithm, PA-AD, is theoretically optimal and significantly more efficient than prior RL-based works in environments with large state spaces. Empirical results show that our proposed PA-AD universally outperforms state-of-the-art attacking methods in various Atari and MuJoCo environments. By applying PA-AD to adversarial training, we achieve state-of-the-art empirical robustness in multiple tasks under strong adversaries.},
+selected={true},
+html={http://FrankZheng2022.github.io/project/evasion-rl/index.html},
+add={<b> Best Paper Award </b> in NeurIPS 2021 Workshop of Safe and Robust Control of Uncertain Systems},
+}
+
+@inproceedings{2022transfer,
+abbr={ICLR 2022},
+title={Transfer {RL} across Observation Feature Spaces via Model-Based Regularization},
+author={Yanchao Sun and Ruijie Zheng and Xiyao Wang and Andrew E Cohen and Furong Huang},
+booktitle={International Conference on Learning Representations},
+year={2022},
+abstract={In many reinforcement learning (RL) applications, the observation space is specified by human developers and restricted by physical realizations, and may thus be subject to dramatic changes over time (e.g. increased number of observable features). However, when the observation space changes, the previous policy will likely fail due to the mismatch of input features, and another policy must be trained from scratch, which is inefficient in terms of computation and sample complexity. Following theoretical insights, we propose a novel algorithm which extracts the latent-space dynamics in the source task, and transfers the dynamics model to the target task to use as a model-based regularizer. Our algorithm works for drastic changes of observation space (e.g. from vector-based observation to image-based observation), without any inter-task mapping or any prior knowledge of the target task. Empirical results show that our algorithm significantly improves the efficiency and stability of learning in the target task.},
+url={https://openreview.net/forum?id=7KdAoOsI81C},
+selected={true},
+add={none},
+html={http://FrankZheng2022.github.io/project/transfer/index.html},
+}
+
+@inproceedings{liang2022efficient,
+abbr={NeurIPS 2022},
+title={Efficient Adversarial Training without Attacking: Worst-Case-Aware Robust Reinforcement Learning},
+author={Yongyuan Liang and Yanchao Sun and Ruijie Zheng and Furong Huang},
+booktitle={Advances in Neural Information Processing Systems},
+editor={Alice H. Oh and Alekh Agarwal and Danielle Belgrave and Kyunghyun Cho},
+year={2022},
+abstract={Recent studies reveal that a well-trained deep reinforcement learning (RL) policy can be particularly vulnerable to adversarial perturbations on input observations. Therefore, it is crucial to train RL agents that are robust against any attacks with a bounded budget. Existing robust training methods in deep RL either treat correlated steps separately, ignoring the robustness of long-term rewards, or train the agents and RL-based attacker together, doubling the computational burden and sample complexity of the training process. In this work, we propose a strong and efficient robust training framework for RL, named Worst-case-aware Robust RL (WocaR-RL) that directly estimates and optimizes the worst-case reward of a policy under bounded l_p attacks without requiring extra samples for learning an attacker. Experiments on multiple environments show that WocaR-RL achieves state-of-the-art performance under various strong attacks, and obtains significantly higher training efficiency than prior state-of-the-art robust training methods. The code of this work is available at https://github.com/umd-huang-lab/WocaR-RL.},
+html={https://openreview.net/forum?id=y-E1htoQl-n},
+selected={false},
+add={none},
+}
+
+
