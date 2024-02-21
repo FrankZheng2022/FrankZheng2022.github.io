@@ -2,25 +2,26 @@
 layout: about
 title: about
 permalink: /
-subtitle: <a href='#'>Affiliations</a>. Address. Contacts. Moto. Etc.
 
 profile:
   align: right
   image: prof_pic.jpg
   image_circular: false # crops the image to make it circular
   more_info: >
-    <p>555 your office number</p>
-    <p>123 your address street</p>
-    <p>Your City, State 12345</p>
 
-news: true # includes a list of news items
-latest_posts: true # includes a list of the newest posts
+news: false # includes a list of news items
+latest_posts: false # includes a list of the newest posts
 selected_papers: true # includes a list of papers marked as "selected={true}"
 social: true # includes social icons at the bottom of the page
 ---
 
-Write your biography here. Tell the world about yourself. Link to your favorite [subreddit](http://reddit.com). You can put a picture in, too. The code is already in, just name your picture `prof_pic.jpg` and put it in the `img/` folder.
+I am a second-year Ph.D. student in Computer Science at the [University of Maryland, College Park](http://www.umd.edu), where I am fortunate to be advised by [Prof. Furong Huang](http://furong-huang.com) and [Prof. Hal Daumé III](http://users.umiacs.umd.edu/~hal). 
+Before that, I obtained my Bachelor's degree in Computer Science and Mathematics with high honors also from the University of Maryland, College Park.
+My research spans a variety of topics in sequential decision making/reinforcement learning (RL), including multitask offline pretraining (foundational model for sequential decision making), representation learning in visual RL, model-based RL, adversarial RL, etc. 
+My long-term goal is to develop a generally capable, robust, and self-adaptive embodied agent, endowed with extensive prior knowledge from a broad spectrum of structured and unstructured data.
 
-Put your address / P.O. box / other info right below your picture. You can also disable any of these elements by editing `profile` property of the YAML header of your `_pages/about.md`. Edit `_bibliography/papers.bib` and Jekyll will render your [publications page](/al-folio/publications/) automatically.
+In visual RL, I developed a temporal contrastive representation learning mechanism, [TACO](https://ruijiezheng.com/project/TACO/index.html) that simultaneously learn state and action representations for online and offline visual RL algorithms. Building on top of TACO, [Premier-TACO](https://premiertaco.github.io) scales up to large-scale multitask offline pretraining, learning a universal visual representation for efficient adaptation to new tasks with few-shot imitation learning. Additionally, another of my recent work [DrM](https://drm-rl.github.io) pioneers the first visual RL algorithm mastering a diverse range of complex locomotion and manipulation tasks through the concept of dormant ratio. 
 
-Link to your social media connections, too. This theme is set up to use [Font Awesome icons](https://fontawesome.com/) and [Academicons](https://jpswalsh.github.io/academicons/), like the ones below. Add your Facebook, Twitter, LinkedIn, Google Scholar, or just disable all of them.
+Beyond visuo-motor policy learning, I have also worked on [efficient model-based RL](http://FrankZheng2022.github.io/project/mbrl_lipschitz/index.html), [transfer-RL across different observation spaces](http://FrankZheng2022.github.io/project/transfer/index.html), and [adversarial RL](http://frankzheng2022.github.io/project/evasion-rl/index.html) to make policy robust against observation and communication attacks.
+
+
