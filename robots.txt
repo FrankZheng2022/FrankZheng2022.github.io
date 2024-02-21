@@ -1,4 +1,4 @@
 User-agent: *
 Disallow:
 
-Sitemap: https://FrankZheng2022.github.io/sitemap.xml
+Sitemap: https://FrankZheng2022.github.iotest/sitemap.xml
