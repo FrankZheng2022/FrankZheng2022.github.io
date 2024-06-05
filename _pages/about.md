@@ -17,7 +17,7 @@ social: true # includes social icons at the bottom of the page
 
 I am a second-year Ph.D. student in Computer Science at the [University of Maryland, College Park](http://www.umd.edu), where I am fortunate to be advised by [Prof. Furong Huang](http://furong-huang.com) and [Prof. Hal Daumé III](http://users.umiacs.umd.edu/~hal). 
 Before that, I obtained my Bachelor's degree in Computer Science and Mathematics both with high honors from the University of Maryland, College Park.
-My research spans a variety of topics in sequential decision making/reinforcement learning (RL), including multitask offline pretraining (foundational model for sequential decision making), self-supervised representation learning in visual RL, model-based RL, adversarial RL, etc. 
+My research spans a variety of topics in sequential decision making and reinforcement learning (RL), including multitask offline pretraining (foundational model for sequential decision making), self-supervised representation learning in visual RL, model-based RL, adversarial RL, etc. 
 My long-term goal is to develop a generally capable, robust, and self-adaptive embodied agent, endowed with extensive prior knowledge from a broad spectrum of structured and unstructured data.
 You can find my CV [here](http://frankzheng2022.github.io/CV.pdf) and my research statement [here](http://frankzheng2022.github.io/Research_Statement.pdf).
 
