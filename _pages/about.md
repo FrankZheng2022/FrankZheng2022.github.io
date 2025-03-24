@@ -17,6 +17,7 @@ social: true # includes social icons at the bottom of the page
 
 I am a third-year Ph.D. student in Computer Science at the [University of Maryland, College Park](http://www.umd.edu), where I am fortunate to be advised by [Prof. Furong Huang](http://furong-huang.com) and [Prof. Hal Daumé III](http://users.umiacs.umd.edu/~hal). Currently, I am a research intern at [NVIDIA GEAR lab](https://research.nvidia.com/labs/gear/) working with [Jim Fan](https://jimfan.me/), [Yuke Zhu](https://yukezhu.me/), and Scott Reed on generalist humanoid robot foundation model.
 Before that, I obtained my Bachelor's degree in Computer Science and Mathematics both with high honors from the University of Maryland, College Park.
+
 My research spans a variety of topics in reinforcement learning and robotics, including large scale generalist policy pretraining, integrating (latent) world model into robot policy learning, self-supervised representation learning in reinforcement learning and robotics, etc. My long-term goal is to develop a generally capable, robust, and self-adaptive embodied agent, endowed with extensive prior knowledge from a broad spectrum of structured and unstructured data.
 You can find my CV [here](http://frankzheng2022.github.io/CV.pdf).
 
