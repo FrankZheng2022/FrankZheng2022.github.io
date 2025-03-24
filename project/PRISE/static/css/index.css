@@ -134,5 +134,9 @@ body {
 }
 
 
-
-
+.custom-spacing {
+  margin-bottom: 0.1rem; /* Adjust the value as needed */
+}
+.custom-spacing-above {
+  margin-top: 0.1rem; /* Adjust the value as needed */
+}
